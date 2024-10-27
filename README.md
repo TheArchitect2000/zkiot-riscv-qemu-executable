@@ -99,7 +99,7 @@ For running the program on a computer, follow these steps.
 
 #### Step 2: Generate Commitment and New Code
 
-1. Run the `commitmentGenerator` to create a commitment file and generate the new code:
+1. Run the Commitment Generator: Open your terminal or command prompt and navigate to the directory containing your program.s, commitment_generator.exe, and device_config.json:
    ```bash
    commitmentGenerator program.s deviceConfig.json
    ```
@@ -140,7 +140,7 @@ For running the program on an IoT device, follow these steps.
 
 #### Step 2: Generate Commitment and New Code
 
-1. Run the `commitmentGenerator` to create a commitment file and generate the new code:
+1. Run the Commitment Generator: Open your terminal or command prompt and navigate to the directory containing your program.s, commitment_generator.exe, and device_config.json:
    ```bash
    commitmentGenerator program.s deviceConfig.json
    ```
