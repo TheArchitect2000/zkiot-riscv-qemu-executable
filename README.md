@@ -104,7 +104,7 @@ For running the program on a computer, follow these steps.
    commitmentGenerator program.s deviceConfig.json
    ```
    - This command outputs:
-     - `program_new.s` - .
+     - `program_new.s` - New generated assembly file.
      - `program_commitment.json` - The commitment file for blockchain upload.
      - `program_param.json` - Additional parameters file if required.
 
@@ -145,7 +145,7 @@ For running the program on an IoT device, follow these steps.
    commitmentGenerator program.s deviceConfig.json
    ```
    - This command outputs:
-     - `program_new.s` - .
+     - `program_new.s` - New generated assembly file.
      - `program_commitment.json` - The commitment file for blockchain upload.
      - `program_param.json` - Additional parameters file if required.
 
