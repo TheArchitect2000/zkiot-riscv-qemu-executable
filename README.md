@@ -75,6 +75,9 @@ Install RISC-V cross-compilation tools for your IoT device:
 sudo apt install gcc-riscv64-unknown-elf g++-riscv64-unknown-elf
 ```
 
+### Install Arduino Toolchain (for ESP32)
+XXXXX
+
 ### Commitment Generator Tool
 
 Download or install the `commitmentGenerator` tool as per your project requirements.
