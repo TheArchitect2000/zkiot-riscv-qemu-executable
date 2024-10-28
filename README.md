@@ -43,9 +43,9 @@ This project provides a framework for compiling, executing, and committing C++ u
 1. **Local Computer**
    A. ***GCC Compiler***: For compiling C++ code.
    B. ***RISC-V Toolchain***: Required for cross-compilation if running on IoT devices.
-4. **Arduino ESP32**
+2. **Arduino ESP32**
    A. ***Arduino Toolchain***: For compiling C++ code.
-6. **Commitment Generator**: A custom tool used to create commitments for program verification.
+3. **Commitment Generator**: A custom tool used to create commitments for program verification.
 
 ## Installation
 
