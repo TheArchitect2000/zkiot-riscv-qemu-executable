@@ -84,12 +84,7 @@ Download or install the `commitmentGenerator` tool as per your project requireme
 
 ## Usage
 
-### Local Execution
-
-For running the program on a computer, follow these steps.
-
-#### Step 1: Generate the Assembly File
-
+### Step 1: Writing a C++ Program
 1. Write your C++ program in a file named `program.cpp`:
    ```cpp
    // Example program.cpp
@@ -98,12 +93,18 @@ For running the program on a computer, follow these steps.
    }
    ```
 
+### Step 2: Adding ZKP codes
+#### Local Execution
+For running the program on a computer, follow these steps.
+
+##### Step 1: Generate the Assembly File
 2. Compile `program.cpp` to generate an assembly file:
    ```bash
    riscv64-unknown-elf-g++ -S program.cpp -o program.s
    ```
+#### ESP32 Execution
 
-#### Step 2: Generate Commitment and New Code
+#### Step 3: Generate Commitment and New Code
 
 1. Run the Commitment Generator: Open your terminal or command prompt and navigate to the directory containing your program.s, commitment_generator.exe, and device_config.json:
    ```bash
@@ -114,7 +115,7 @@ For running the program on a computer, follow these steps.
      - `program_commitment.json` - The commitment file for blockchain upload.
      - `program_param.json` - Additional parameters file if required.
 
-#### Step 3: Compile and Execute
+#### Step 4: Compile and Execute
 
 1. Assemble and link the new code:
    ```bash
