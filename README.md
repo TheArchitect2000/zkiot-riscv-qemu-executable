@@ -98,14 +98,14 @@ This project provides a framework for compiling, executing, and committing C++ u
    ```
 
     
-## Compile and Generate an assembly file; program.s 
+## Compile and Generate an assembly file
 ### A. Compile `program.cpp` 
    ```bash
    riscv64-unknown-elf-g++ -S program.cpp -o program.s  -march=rv32gc -mabi=ilp32
    ```
 ### A. Compile `program.ino` 
-   ***Compile `program.ino` using Arduino GUI to generate 'program.elf'***
-   ***Run the following command to generate program.s from the elf file.***
+   ***Compile `program.ino` using Arduino GUI to generate 'program.elf'.***
+   ***Then, Run the following command to generate program.s from the elf file.***
    ```bash
     riscv32-esp-elf-objdump.exe -d program.elf > program.s
    ```
