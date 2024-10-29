@@ -68,12 +68,11 @@ This project provides a framework for compiling, executing, and committing C++ u
      brew install riscv-software-src/riscv/riscv-tools
      ```
 ### C. Install Arduino Toolchain 
-*** Follow the instruction from https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html to install the Arduino ESP32 toolchain.
+***Follow the instruction from https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html to install the Arduino ESP32 toolchain.***
 
 ## Writing a C++ program
 
 ### Sample C++ Program for GCC and save it as program.cpp 
-1. Write your C++ program in a file named `program.cpp`:
    ```
     // Example program.cpp for gcc
     int main() {
@@ -100,14 +99,14 @@ This project provides a framework for compiling, executing, and committing C++ u
    riscv64-unknown-elf-g++ -S program.cpp -o program.s  -march=rv32gc -mabi=ilp32
    ```
 ### A. Compile `program.ino` 
-   *** Compile `program.ino` using Arduino GUI to generate 'program.elf'
-   *** Run the following command to generate program.s from the elf file.
+   ***Compile `program.ino` using Arduino GUI to generate 'program.elf'***
+   ***Run the following command to generate program.s from the elf file.***
    ```bash
     riscv32-esp-elf-objdump.exe -d program.elf > program.s
    ```
 
 ## Download and Edit `device_config.json` 
-   *** download device_config.json from this repository and edit the parameters.
+   ***Download device_config.json from this repository and edit the parameters.***
    ```bash
    {
       "Class": 32-bit Integer,
@@ -118,11 +117,11 @@ This project provides a framework for compiling, executing, and committing C++ u
       "Lines": 64-bit Array
     }
    ```bash
-   *** Save device_config.json on your computer.
+   ***Save device_config.json on your computer.***
 
 ## Download and Execute the Commitment Generator Program 
-    *** Commitment Generator is a custom tool used to create commitments for an arbitrary assembly program.
-    *** Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
+    ***Commitment Generator is a custom tool used to create commitments for an arbitrary assembly program.***
+    ***Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.***
 
 
 ### Step 2: Adding ZKP codes
