@@ -48,127 +48,128 @@ This project provides a framework for compiling, executing, and committing C++ u
 
 ### A. Install GCC Compiler
 1. **Ubuntu**:
-   ```
-   sudo apt update
-   sudo apt install gcc g++ -y
-   ```
+```
+sudo apt update
+sudo apt install gcc g++ -y
+```
 2. **macOS**:
 Install Xcode Command Line Tools, which include GCC:
-     ```
-     xcode-select --install
-     ```
+```
+xcode-select --install
+```
 ### B. Install RISC-V Toolchain 
 1. **Ubuntu**:
-   ```
-   sudo apt install gcc-riscv64-unknown-elf g++-riscv64-unknown-elf
-   ```
+```
+sudo apt install gcc-riscv64-unknown-elf g++-riscv64-unknown-elf
+```
 2. **macOS**:
-   - Install Xcode Command Line Tools, which include GCC:
-     ```
-     brew tap riscv-software-src/homebrew-riscv
-     brew install riscv-software-src/riscv/riscv-tools
-     ```
+Install Xcode Command Line Tools, which include GCC:
+```
+brew tap riscv-software-src/homebrew-riscv
+brew install riscv-software-src/riscv/riscv-tools
+```
 ### C. Install Arduino Toolchain 
 ***Follow the instruction from https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html to install the Arduino ESP32 toolchain.***
-
 
 
 ## Writing a C++ program
 
 ### Write a C++ Program for GCC Compiler and Save it as program.cpp 
-   ```
-    // Example program.cpp for gcc
-    #include <fidesinnova.h>
-    fidesinnova lib;
-    int main() {
-      for(int i = 297; i < 10000;){
-        i += 383;
-      }  
-    lib.proof(4);
-    }
-   ```
+```
+// Example program.cpp for gcc
+int main() {
+  for(int i = 297; i < 10000;){
+    i += 383;
+  }
+}
+```
 ### Write a C++ Program for Arduino Compiler and Save it as program.ino 
-   ```
-     // Example program.ino for Arduino
-     // Microcontroller ESP32-C3/C6
-     #include <fidesinnova.h>
-     fidesinnova lib;
-     void setup() {
-       for(int i = 297; i < 10000;){
-         lib.snapeshot(); 
-         i += 383;
-         lib.snapeshot();          
-       }
-       lib.proof(4);
-     }
-     void loop() {
-     }
-   ```
+```
+// Example program.ino for Arduino
+// Microcontroller ESP32-C3/C6
+void setup() {
+ for(int i = 297; i < 10000;){
+   i += 383;         
+ }
+}
+void loop() {
+}
+```
 
     
 ## Compile and Generate an assembly file
 ### A. Compile `program.cpp` 
-   ```bash
+   ```
    riscv64-unknown-elf-g++ -S program.cpp -o program.s  -march=rv32gc -mabi=ilp32
    ```
 ### A. Compile `program.ino` 
    ***Compile `program.ino` using Arduino GUI to generate 'program.ino.elf'.***
    ***Then, Run the following command to generate the 'program.s' assembly file.***
-   ```bash
+   ```
     riscv32-esp-elf-objdump.exe -d program.ino.elf > program.s
    ```
 
 ## Download and Edit `device_config.json` 
-   ### Download device_config.json from this repository and edit the parameters.
-   ```bash
-   {
-      "Class": 32-bit Integer,
-      "IoT_Manufacturer_Name": String,
-      "IoT_Device_Name": String,
-      "Device_Hardware_Version": float,
-      "Firmware_Version": float,
-      "Lines": 64-bit Array
-    }
-   ```
-   ### Save device_config.json on your computer
+### Download device_config.json from this repository and edit the parameters.
+```
+{
+  "Class": 32-bit Integer,
+  "IoT_Manufacturer_Name": String,
+  "IoT_Device_Name": String,
+  "Device_Hardware_Version": float,
+  "Firmware_Version": float,
+  "Lines": 64-bit Array
+}
+```
+### Save device_config.json on your computer
 
-## Download th setup.json file
+## Download the setup.json file
     ### Download the 'setup.json' from this repository and save it in the same folder with device_config.json
 
 ## Download and Execute the Commitment Generator program 
-    ### Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
-    ### Open a terminal, navigate to the directory containing your program.s, commitmentGenerator.exe, device_config.json, and setup.json:
-   ```bash
-   commitmentGenerator setup.json deviceConfig.json program.s
-   ```
-   - This command outputs:
-      - `program_new.s` - New generated assembly file with added macros .
-     ```bash
-       {
-          mv 0x10, x0
-          mv 0x11, x1
-          mv 0x12, x2
-          mv 0x13, x3
-          ....
-          mv 0x10, x0
-          mv 0x11, x1
-          mv 0x12, x2
-          mv 0x13, x3             
-       }
-     ```
-     - `program_commitment.json` - The commitment file to be uploaded on blockchain.
-     - `program_param.json` - Additional parameters file that accelerate proof generation program.
+### Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
+### Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `device_config.json`, and `setup.json`:
+```
+commitmentGenerator setup.json deviceConfig.json program.s
+```
+- This command outputs:
+- `program_new.s` - New generated assembly file with added macros.
+```
+{
+  mv 0x10, x0
+  mv 0x11, x1
+  mv 0x12, x2
+  mv 0x13, x3
+  // TODO: Use the snapshot assembly code instead of "mv 0x10, x0"... .
+  // lib.snapshot
+
+  ....
+  // One instruction like ADDI, MUL, etc..
+
+  mv 0x10, x0
+  mv 0x11, x1
+  mv 0x12, x2
+  mv 0x13, x3
+  // TODO: Use the snapshot assembly code instead of "mv 0x10, x0"... .
+  // lib.snapshot
+
+  // TODO: Adding the proofGenerator assembly function here.
+  // lib.proofGenerator
+}
+```
+- `program_commitment.json` - The commitment file to be uploaded on blockchain.
+- `program_param.json` - Additional parameters file that accelerate proof generation program.
 
 #### Step 4: Compile and Execute
 
 1. Assemble and link the new code:
-   ```bash
+   ```
    riscv64-unknown-elf-as program_new.s -o program_new.o
    riscv64-unknown-elf-ld program_new.o -o program_new
    ```
 
 2. Run the executable:
-   ```bash
+   ```
    file program_new qemu-riscv64 ./program_new
    ```
 3. Final Tasks:<br>
@@ -185,14 +186,14 @@ For running the program on an IoT device, follow these steps.
 1. Write your C++ program in `program.cpp` as shown above.
 
 2. Cross-compile `program.cpp` for RISC-V (or your target architecture) to generate an assembly file:
-   ```bash
+   ```
    riscv32-esp-elf-objdump.exe -d program.elf > program.s
    ```
 
 #### Step 2: Generate Commitment and New Code
 
 1. Run the Commitment Generator: Open your terminal or command prompt and navigate to the directory containing your program.s, commitment_generator.exe, and device_config.json:
-   ```bash
+   ```
    commitmentGenerator program.s deviceConfig.json
    ```
    - This command outputs:
@@ -203,13 +204,13 @@ For running the program on an IoT device, follow these steps.
 #### Step 3: Cross-Compile and Upload
 
 1. Assemble and link the new code:
-   ```bash
+   ```
    riscv32-esp-elf-as -o program_new.o program_new.s
    riscv32-esp-elf-ld -o program.elf program_new.o -T esp32_out.ld
       ```
 
 2. Convert the program to a binary format suitable for your IoT device:
-   ```bash
+   ```
    riscv32-esp-elf-objcopy -O binary program_new.elf program_new.bin
    ```
 
