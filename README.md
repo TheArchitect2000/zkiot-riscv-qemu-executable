@@ -85,7 +85,7 @@ This project provides a framework for compiling, executing, and committing C++ u
     }
    ```
 ### Write a C++ Program for Arduino Compiler and Save it as program.ino 
-    ```
+   ```
      // Example program.ino for Arduino
      // Microcontroller ESP32-C3/C6
      void setup() {
@@ -95,7 +95,7 @@ This project provides a framework for compiling, executing, and committing C++ u
      }
      void loop() {
      }
-    ```
+   ```
 
     
 ## Compile and Generate an assembly file; program.s 
