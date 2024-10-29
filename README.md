@@ -72,7 +72,7 @@ This project provides a framework for compiling, executing, and committing C++ u
 
 ## Writing a C++ program
 
-### Sample C++ Program for GCC and save it as program.cpp 
+### Write a C++ Program for GCC Compiler and Save it as program.cpp 
    ```
     // Example program.cpp for gcc
     int main() {
@@ -81,7 +81,7 @@ This project provides a framework for compiling, executing, and committing C++ u
       }
     }
    ```
-### Write a C++ Program for Arduino and save it as program.ino 
+### Write a C++ Program for Arduino Compiler and Save it as program.ino 
     ```
      // Example program.ino for Arduino
      // Microcontroller ESP32-C3/C6
