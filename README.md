@@ -74,7 +74,7 @@ brew install riscv-software-src/riscv/riscv-tools
 
 ## Writing a C++ program
 
-### Write a C++ Program for GCC Compiler and Save it as program.cpp 
+### A. Write a C++ Program for GCC Compiler and Save it as program.cpp 
 ```
 // Example program.cpp for gcc
 int main() {
@@ -83,7 +83,7 @@ int main() {
   }
 }
 ```
-### Write a C++ Program for Arduino Compiler and Save it as program.ino 
+### B. Write a C++ Program for Arduino Compiler and Save it as program.ino 
 ```
 // Example program.ino for Arduino
 // Microcontroller ESP32-C3/C6
@@ -102,7 +102,7 @@ void loop() {
    ```
    riscv64-unknown-elf-g++ -S program.cpp -o program.s  -march=rv32gc -mabi=ilp32
    ```
-### A. Compile `program.ino` 
+### B. Compile `program.ino` 
    ***Compile `program.ino` using Arduino GUI to generate 'program.ino.elf'.***
    ***Then, Run the following command to generate the 'program.s' assembly file.***
    ```
@@ -110,7 +110,7 @@ void loop() {
    ```
 
 ## Download and Edit `device_config.json` 
-### Download device_config.json from this repository and edit the parameters.
+### A. Download device_config.json from this repository and edit the parameters.
 ```
 {
   "Class": 32-bit Integer,
@@ -121,14 +121,14 @@ void loop() {
   "Lines": 64-bit Array
 }
 ```
-### Save device_config.json on your computer
+### B. Save device_config.json on your computer
 
 ## Download the setup.json file
-### Download the 'setup.json' from this repository and save it in the same folder with device_config.json
+### A. Download the 'setup.json' from this repository and save it in the same folder with device_config.json
 
 ## Download and Execute the Commitment Generator program 
-### Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
-### Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `device_config.json`, and `setup.json`:
+### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
+### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `device_config.json`, and `setup.json`:
 ```
 commitmentGenerator setup.json deviceConfig.json program.s
 ```
