@@ -55,7 +55,7 @@ This project provides a framework for compiling, executing, and committing C++ u
    - Download and install MinGW, which provides GCC for Windows. [MinGW Installation Guide](http://www.mingw.org/wiki/Getting_Started).
    - After installing, add `C:\MinGW\bin` to your system's `Path` variable.
 
-2. **Linux**:
+2. **Ubuntu**:
    ```bash
    sudo apt update
    sudo apt install gcc g++ -y
@@ -71,6 +71,10 @@ This project provides a framework for compiling, executing, and committing C++ u
 
 Install RISC-V cross-compilation tools for your IoT device:
 ```bash
+# Example for macOS
+brew tap riscv-software-src/homebrew-riscv
+brew install riscv-software-src/riscv/riscv-tools
+
 # Example for Ubuntu
 sudo apt install gcc-riscv64-unknown-elf g++-riscv64-unknown-elf
 ```
