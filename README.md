@@ -91,10 +91,21 @@ Download or install the `commitmentGenerator` tool as per your project requireme
 ### Step 1: Writing a C++ Program
 1. Write your C++ program in a file named `program.cpp`:
    ```cpp
-   // Example program.cpp
-   int main() {
-       return 0;
-   }
+    // Example program.cpp for gcc
+    int main() {
+      for(int i = 297; i < 10000;){
+        i += 383;
+      }
+    }
+
+     // Example program.ino for ESP32 (Arduino)
+      void setup() {
+        for(int i = 297; i < 10000;){
+          i += 383;
+        }
+      }
+      void loop() {
+      }
    ```
 
 ### Step 2: Adding ZKP codes
@@ -104,9 +115,9 @@ For running the program on a computer, follow these steps.
 ##### Step 1: Generate the Assembly File
 2. Compile `program.cpp` to generate an assembly file:
    ```bash
-   riscv64-unknown-elf-g++ -S program.cpp -o program.s
+   riscv64-unknown-elf-g++ -S program.cpp -o program.s  -march=rv32gc -mabi=ilp32
    ```
-#### ESP32 Execution
+2. Compile `program.ino` to generate an assembly file using Arduino GUI:
 
 #### Step 3: Generate Commitment and New Code
 
