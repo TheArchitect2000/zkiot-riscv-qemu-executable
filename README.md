@@ -123,10 +123,10 @@ void loop() {
 ```
 ### B. Save device_config.json on your computer
 
-## Step 5. Download the setup.json file
+## Step 5. Download the `setup.json` file
 ### A. Download the 'setup.json' from this repository and save it in the same folder with device_config.json
 
-## Download and Execute the Commitment Generator program 
+## Download and Execute `commitmentGenerator` 
 ### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
 ### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `device_config.json`, and `setup.json`:
 ```
