@@ -48,23 +48,23 @@ This project provides a framework for compiling, executing, and committing C++ u
 
 ### A. Install GCC Compiler
 1. **Ubuntu**:
-   ```bash
+   ```
    sudo apt update
    sudo apt install gcc g++ -y
    ```
 2. **macOS**:
-   - Install Xcode Command Line Tools, which include GCC:
-     ```bash
+Install Xcode Command Line Tools, which include GCC:
+     ```
      xcode-select --install
      ```
 ### B. Install RISC-V Toolchain 
 1. **Ubuntu**:
-   ```bash
+   ```
    sudo apt install gcc-riscv64-unknown-elf g++-riscv64-unknown-elf
    ```
 2. **macOS**:
    - Install Xcode Command Line Tools, which include GCC:
-     ```bash
+     ```
      brew tap riscv-software-src/homebrew-riscv
      brew install riscv-software-src/riscv/riscv-tools
      ```
