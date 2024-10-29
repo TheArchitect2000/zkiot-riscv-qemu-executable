@@ -38,6 +38,7 @@ This project provides a framework for compiling, executing, and committing C++ u
     - [Step 3: Cross-Compile and Upload](#step-3-cross-compile-and-upload)
 - [Troubleshooting](#troubleshooting)
 
+
 ## Prerequisites
 1. **To execute on Local Computer RISC-V Emulator**
    A. ***GCC Compiler***: For compiling C++ code.
@@ -70,6 +71,8 @@ This project provides a framework for compiling, executing, and committing C++ u
 ### C. Install Arduino Toolchain 
 ***Follow the instruction from https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html to install the Arduino ESP32 toolchain.***
 
+
+
 ## Writing a C++ program
 
 ### Write a C++ Program for GCC Compiler and Save it as program.cpp 
@@ -93,6 +96,8 @@ This project provides a framework for compiling, executing, and committing C++ u
      void loop() {
      }
     ```
+
+    
 ## Compile and Generate an assembly file; program.s 
 ### A. Compile `program.cpp` 
    ```bash
