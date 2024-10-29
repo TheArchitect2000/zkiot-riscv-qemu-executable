@@ -39,7 +39,7 @@ This project provides a framework for compiling, executing, and committing C++ u
 - [Troubleshooting](#troubleshooting)
 
 
-## Prerequisites
+## Step 1. Prerequisites
 1. **To execute on Local Computer RISC-V Emulator**
    A. ***GCC Compiler***: For compiling C++ code.
    B. ***RISC-V Toolchain***: Required for cross-compilation if running on IoT devices.
@@ -72,7 +72,7 @@ brew install riscv-software-src/riscv/riscv-tools
 ***Follow the instruction from https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html to install the Arduino ESP32 toolchain.***
 
 
-## Writing a C++ program
+## Step 2. Writing a C++ program
 
 ### A. Write a C++ Program for GCC Compiler and Save it as program.cpp 
 ```
@@ -97,7 +97,7 @@ void loop() {
 ```
 
     
-## Compile and Generate an assembly file
+## Step 3. Compile and Generate an assembly file
 ### A. Compile `program.cpp` 
    ```
    riscv64-unknown-elf-g++ -S program.cpp -o program.s  -march=rv32gc -mabi=ilp32
@@ -109,7 +109,7 @@ void loop() {
     riscv32-esp-elf-objdump.exe -d program.ino.elf > program.s
    ```
 
-## Download and Edit `device_config.json` 
+## Step 4. Download and Edit `device_config.json` 
 ### A. Download device_config.json from this repository and edit the parameters.
 ```
 {
@@ -123,7 +123,7 @@ void loop() {
 ```
 ### B. Save device_config.json on your computer
 
-## Download the setup.json file
+## Step 5. Download the setup.json file
 ### A. Download the 'setup.json' from this repository and save it in the same folder with device_config.json
 
 ## Download and Execute the Commitment Generator program 
