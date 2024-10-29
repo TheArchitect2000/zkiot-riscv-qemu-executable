@@ -126,7 +126,7 @@ void loop() {
 ## Step 5. Download the `setup.json` file
 ### A. Download the 'setup.json' from this repository and save it in the same folder with device_config.json
 
-## Download and Execute `commitmentGenerator` 
+## Step 6. Download and Execute `commitmentGenerator` 
 ### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
 ### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `device_config.json`, and `setup.json`:
 ```
@@ -160,14 +160,13 @@ commitmentGenerator setup.json deviceConfig.json program.s
 - `program_commitment.json` - The commitment file to be uploaded on blockchain.
 - `program_param.json` - Additional parameters file that accelerate proof generation program.
 
-#### Step 4: Compile and Execute
+### C. Compile and Execute
 
 1. Assemble and link the new code:
    ```
    riscv64-unknown-elf-as program_new.s -o program_new.o
    riscv64-unknown-elf-ld program_new.o -o program_new
    ```
-
 2. Run the executable:
    ```
    file program_new qemu-riscv64 ./program_new
@@ -177,11 +176,11 @@ commitmentGenerator setup.json deviceConfig.json program.s
    <b>Upload Commitment to Blockchain:</b> Use the web app panel to upload <b>program_commitment.json</b> to the blockchain, ensuring the integrity of your program.<br>
    <b>Place the Parameter File:</b> Ensure that <b>program_param.json</b> is placed in the same directory as program_new to maintain consistency between the program and its parameters.
 
-### IoT Device Execution
+## Step 7. IoT Device Execution
 
 For running the program on an IoT device, follow these steps.
 
-#### Step 1: Generate the Assembly File
+### A. Generate the Assembly File
 
 1. Write your C++ program in `program.cpp` as shown above.
 
@@ -190,7 +189,7 @@ For running the program on an IoT device, follow these steps.
    riscv32-esp-elf-objdump.exe -d program.elf > program.s
    ```
 
-#### Step 2: Generate Commitment and New Code
+#### B. Generate Commitment and New Code
 
 1. Run the Commitment Generator: Open your terminal or command prompt and navigate to the directory containing your program.s, commitment_generator.exe, and device_config.json:
    ```
@@ -201,7 +200,7 @@ For running the program on an IoT device, follow these steps.
      - `program_commitment.json` - The commitment file for blockchain upload.
      - `program_param.json` - Additional parameters file if required.
 
-#### Step 3: Cross-Compile and Upload
+#### C. Cross-Compile and Upload
 
 1. Assemble and link the new code:
    ```
