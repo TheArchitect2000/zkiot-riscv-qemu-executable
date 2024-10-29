@@ -39,85 +39,97 @@ This project provides a framework for compiling, executing, and committing C++ u
 - [Troubleshooting](#troubleshooting)
 
 ## Prerequisites
-
-1. **Local Computer**
+1. **To execute on Local Computer RISC-V Emulator**
    A. ***GCC Compiler***: For compiling C++ code.
    B. ***RISC-V Toolchain***: Required for cross-compilation if running on IoT devices.
-2. **Arduino ESP32**
-   A. ***Arduino Toolchain***: For compiling C++ code.
-3. **Commitment Generator**: A custom tool used to create commitments for program verification.
+2. **To execute on ESP32 Microcontroller**
+   C. ***Arduino Toolchain***: For compiling C++ code.
 
-## Installation
-
-### Install GCC
-
-1. **Windows**:
-   - Download and install MinGW, which provides GCC for Windows. [MinGW Installation Guide](http://www.mingw.org/wiki/Getting_Started).
-   - After installing, add `C:\MinGW\bin` to your system's `Path` variable.
-
-2. **Ubuntu**:
+### A. Install GCC Compiler
+1. **Ubuntu**:
    ```bash
    sudo apt update
    sudo apt install gcc g++ -y
    ```
-
-3. **macOS**:
+2. **macOS**:
    - Install Xcode Command Line Tools, which include GCC:
      ```bash
      xcode-select --install
      ```
+### B. Install RISC-V Toolchain 
+1. **Ubuntu**:
+   ```bash
+   sudo apt install gcc-riscv64-unknown-elf g++-riscv64-unknown-elf
+   ```
+2. **macOS**:
+   - Install Xcode Command Line Tools, which include GCC:
+     ```bash
+     brew tap riscv-software-src/homebrew-riscv
+     brew install riscv-software-src/riscv/riscv-tools
+     ```
+### C. Install Arduino Toolchain 
+*** Follow the instruction from https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html to install the Arduino ESP32 toolchain.
 
-### Install RISC-V Toolchain (for IoT)
+## Writing a C++ program
 
-Install RISC-V cross-compilation tools for your IoT device:
-```bash
-# Example for macOS
-brew tap riscv-software-src/homebrew-riscv
-brew install riscv-software-src/riscv/riscv-tools
-
-# Example for Ubuntu
-sudo apt install gcc-riscv64-unknown-elf g++-riscv64-unknown-elf
-```
-
-### Install Arduino Toolchain (for ESP32)
-XXXXX
-
-### Commitment Generator Tool
-
-Download or install the `commitmentGenerator` tool as per your project requirements.
-
-## Usage
-
-### Step 1: Writing a C++ Program
+### Sample C++ Program for GCC and save it as program.cpp 
 1. Write your C++ program in a file named `program.cpp`:
-   ```cpp
+   ```
     // Example program.cpp for gcc
     int main() {
       for(int i = 297; i < 10000;){
         i += 383;
       }
     }
-
-     // Example program.ino for ESP32 (Arduino)
-      void setup() {
-        for(int i = 297; i < 10000;){
-          i += 383;
-        }
-      }
-      void loop() {
-      }
    ```
+### Write a C++ Program for Arduino and save it as program.ino 
+    ```
+     // Example program.ino for Arduino
+     // Microcontroller ESP32-C3/C6
+     void setup() {
+       for(int i = 297; i < 10000;){
+         i += 383;
+       }
+     }
+     void loop() {
+     }
+    ```
+## Compile and Generate an assembly file; program.s 
+### A. Compile `program.cpp` 
+   ```bash
+   riscv64-unknown-elf-g++ -S program.cpp -o program.s  -march=rv32gc -mabi=ilp32
+   ```
+### A. Compile `program.ino` 
+   *** Compile `program.ino` using Arduino GUI to generate 'program.elf'
+   *** Run the following command to generate program.s from the elf file.
+   ```bash
+    riscv32-esp-elf-objdump.exe -d program.elf > program.s
+   ```
+
+## Download and Edit `device_config.json` 
+   *** download device_config.json from this repository and edit the parameters.
+   ```bash
+   {
+      "Class": 32-bit Integer,
+      "IoT_Manufacturer_Name": String,
+      "IoT_Device_Name": String,
+      "Device_Hardware_Version": float,
+      "Firmware_Version": float,
+      "Lines": 64-bit Array
+    }
+   ```bash
+   *** Save device_config.json on your computer.
+
+## Download and Execute the Commitment Generator Program 
+    *** Commitment Generator is a custom tool used to create commitments for an arbitrary assembly program.
+    *** Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
+
 
 ### Step 2: Adding ZKP codes
 #### Local Execution
 For running the program on a computer, follow these steps.
 
-##### Step 1: Generate the Assembly File
-2. Compile `program.cpp` to generate an assembly file:
-   ```bash
-   riscv64-unknown-elf-g++ -S program.cpp -o program.s  -march=rv32gc -mabi=ilp32
-   ```
-2. Compile `program.ino` to generate an assembly file using Arduino GUI:
+
 
 #### Step 3: Generate Commitment and New Code
 
