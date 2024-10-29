@@ -124,7 +124,7 @@ void loop() {
 ### Save device_config.json on your computer
 
 ## Download the setup.json file
-    ### Download the 'setup.json' from this repository and save it in the same folder with device_config.json
+### Download the 'setup.json' from this repository and save it in the same folder with device_config.json
 
 ## Download and Execute the Commitment Generator program 
 ### Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
