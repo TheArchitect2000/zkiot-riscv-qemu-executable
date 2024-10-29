@@ -78,20 +78,28 @@ This project provides a framework for compiling, executing, and committing C++ u
 ### Write a C++ Program for GCC Compiler and Save it as program.cpp 
    ```
     // Example program.cpp for gcc
+    #include <fidesinnova.h>
+    fidesinnova lib;
     int main() {
       for(int i = 297; i < 10000;){
         i += 383;
-      }
+      }  
+    lib.proof(4);
     }
    ```
 ### Write a C++ Program for Arduino Compiler and Save it as program.ino 
    ```
      // Example program.ino for Arduino
      // Microcontroller ESP32-C3/C6
+     #include <fidesinnova.h>
+     fidesinnova lib;
      void setup() {
        for(int i = 297; i < 10000;){
+         lib.snapeshot(); 
          i += 383;
+         lib.snapeshot();          
        }
+       lib.proof(4);
      }
      void loop() {
      }
@@ -104,14 +112,14 @@ This project provides a framework for compiling, executing, and committing C++ u
    riscv64-unknown-elf-g++ -S program.cpp -o program.s  -march=rv32gc -mabi=ilp32
    ```
 ### A. Compile `program.ino` 
-   ***Compile `program.ino` using Arduino GUI to generate 'program.elf'.***
-   ***Then, Run the following command to generate program.s from the elf file.***
+   ***Compile `program.ino` using Arduino GUI to generate 'program.ino.elf'.***
+   ***Then, Run the following command to generate the 'program.s' assembly file.***
    ```bash
-    riscv32-esp-elf-objdump.exe -d program.elf > program.s
+    riscv32-esp-elf-objdump.exe -d program.ino.elf > program.s
    ```
 
 ## Download and Edit `device_config.json` 
-   ***Download device_config.json from this repository and edit the parameters.***
+   ### Download device_config.json from this repository and edit the parameters.
    ```bash
    {
       "Class": 32-bit Integer,
@@ -121,30 +129,35 @@ This project provides a framework for compiling, executing, and committing C++ u
       "Firmware_Version": float,
       "Lines": 64-bit Array
     }
+   ```
+   ### Save device_config.json on your computer
+
+## Download th setup.json file
+    ### Download the 'setup.json' from this repository and save it in the same folder with device_config.json
+
+## Download and Execute the Commitment Generator program 
+    ### Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
+    ### Open a terminal, navigate to the directory containing your program.s, commitmentGenerator.exe, device_config.json, and setup.json:
    ```bash
-   ***Save device_config.json on your computer.***
-
-## Download and Execute the Commitment Generator Program 
-    ***Commitment Generator is a custom tool used to create commitments for an arbitrary assembly program.***
-    ***Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.***
-
-
-### Step 2: Adding ZKP codes
-#### Local Execution
-For running the program on a computer, follow these steps.
-
-
-
-#### Step 3: Generate Commitment and New Code
-
-1. Run the Commitment Generator: Open your terminal or command prompt and navigate to the directory containing your program.s, commitment_generator.exe, and device_config.json:
-   ```bash
-   commitmentGenerator program.s deviceConfig.json
+   commitmentGenerator setup.json deviceConfig.json program.s
    ```
    - This command outputs:
-     - `program_new.s` - New generated assembly file.
-     - `program_commitment.json` - The commitment file for blockchain upload.
-     - `program_param.json` - Additional parameters file if required.
+      - `program_new.s` - New generated assembly file with added macros .
+     ```bash
+       {
+          mv 0x10, x0
+          mv 0x11, x1
+          mv 0x12, x2
+          mv 0x13, x3
+          ....
+          mv 0x10, x0
+          mv 0x11, x1
+          mv 0x12, x2
+          mv 0x13, x3             
+       }
+     ```
+     - `program_commitment.json` - The commitment file to be uploaded on blockchain.
+     - `program_param.json` - Additional parameters file that accelerate proof generation program.
 
 #### Step 4: Compile and Execute
 
