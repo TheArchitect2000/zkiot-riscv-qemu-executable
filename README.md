@@ -26,7 +26,7 @@ This project provides a framework for compiling, executing, and committing C++ u
 
 ## Table of Contents
 
-1. Local Execution (Using RISC-V Emulator)  
+1. Local Execution (Using RISC-V Emulator)
    - [Prerequisites](#prerequisites)  
    - [Step 1: Writing a C++ Program](#step-1-writing-a-c-program)  
    - [Step 2: Compile and Generate an Assembly File](#step-2-compile-and-generate-an-assembly-file)  
