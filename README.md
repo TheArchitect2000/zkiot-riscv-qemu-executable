@@ -25,72 +25,68 @@ You can execute your program in two ways:<br>
 This project provides a framework for compiling, executing, and committing C++ user programs. The framework supports both local (computer) and IoT device execution. After executing the program, the final commitment is uploaded to the blockchain to ensure traceability and security.
 
 ## Table of Contents
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Local Execution](#local-execution)
-    - [Step 1: Generate the Assembly File](#step-1-generate-the-assembly-file)
-    - [Step 2: Generate Commitment and New Code](#step-2-generate-commitment-and-new-code)
-    - [Step 3: Compile and Execute](#step-3-compile-and-execute)
-  - [IoT Device Execution](#iot-device-execution)
-    - [Step 1: Generate the Assembly File](#step-1-generate-the-assembly-file-1)
-    - [Step 2: Generate Commitment and New Code](#step-2-generate-commitment-and-new-code-1)
-    - [Step 3: Cross-Compile and Upload](#step-3-cross-compile-and-upload)
+- [Local Execution](#local-execution)
+  - [Step 1: Generate the Assembly File](#step-1-generate-the-assembly-file)
+  - [Step 2: Generate Commitment and New Code](#step-2-generate-commitment-and-new-code)
+  - [Step 3: Compile and Execute](#step-3-compile-and-execute)
+- [IoT Device Execution](#iot-device-execution)
+  - [Step 1: Generate the Assembly File](#step-1-generate-the-assembly-file-1)
+  - [Step 2: Generate Commitment and New Code](#step-2-generate-commitment-and-new-code-1)
+  - [Step 3: Cross-Compile and Upload](#step-3-cross-compile-and-upload)
 - [Troubleshooting](#troubleshooting)
 
+## Local Execution (To execute on Local Computer using RISC-V Emulator)
+### Prerequisites
+***1. GCC Compiler:*** For compiling C++ code.
 
-## Prerequisites
-1. **To execute on Local Computer RISC-V Emulator**
-   
-   A. ***GCC Compiler***: For compiling C++ code.
-   
-   B. ***RISC-V Emulator***: For emulating program_new locally.
-   
-2. **To execute on ESP32 Microcontroller**
-   
-   C. ***Arduino Toolchain***: For compiling C++ code.
-
-### A. Install GCC Compiler
-
-1. **Ubuntu**:
-    to install the RISC-V GNU Compiler Toolchain follow the instructions from https://github.com/riscv-collab/riscv-gnu-toolchain or use the instructions below
-
-    ```
-    sudo apt update
-    git clone https://github.com/riscv/riscv-gnu-toolchain
-    ```
-    This repository uses submodules, but submodules will fetch automatically on demand, so `--recursive` or `git submodule update --init --recursive` is not needed.
-    
-    **Warning: git clone takes around 6.65 GB of disk and download size**
-    
-    Several standard packages are needed to build the toolchain.
-    
-    On Ubuntu, executing the following command should suffice:
-    ```
-    sudo apt-get install autoconf automake autotools-dev curl python3 python3-pip libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev ninja-build git cmake libglib2.0-dev libslirp-dev
-    ```
-    We then got to the root directory of riscv-gnu-toolchain and configured it to build the Newlib cross-compiler.
-   
-    ```
-    cd riscv-gnu-toolchain
-    ./configure --prefix=/opt/riscv
-    make
-    ```
-    **It may take a long time to install  the riscv-gnu-toolchain**
-
-    Then add the path to the system
-   
-    ```
-    echo 'export PATH=/opt/riscv/bin:$PATH' >> ~/.bashrc
-    source ~/.bashrc
-    ```
-
-3. **macOS**:
-
-Install Xcode Command Line Tools, which include GCC:
+#### Ubuntu:
+To install the RISC-V GNU Compiler and Toolchain follow the instructions from https://github.com/riscv-collab/riscv-gnu-toolchain or use the instructions below
 ```
-xcode-select --install
+sudo apt update
+git clone https://github.com/riscv/riscv-gnu-toolchain
 ```
+This repository uses submodules, but submodules will fetch automatically on demand, so `--recursive` or `git submodule update --init --recursive` is not needed.
+
+**Warning: git clone takes around 6.65 GB of disk and download size**
+
+Several standard packages are needed to build the toolchain.
+
+On Ubuntu, executing the following command should suffice:
+```
+sudo apt-get install autoconf automake autotools-dev curl python3 python3-pip libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev ninja-build git cmake libglib2.0-dev libslirp-dev
+```
+We then got to the root directory of riscv-gnu-toolchain and configured it to build the Newlib cross-compiler.
+
+```
+cd riscv-gnu-toolchain
+./configure --prefix=/opt/riscv
+make
+```
+**It may take a long time to install the riscv-gnu-toolchain**
+
+Then add the path to the system
+
+```
+echo 'export PATH=/opt/riscv/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+```
+
+#### macOS:
+To install the RISC-V GNU Compiler and Toolchain follow the instructions from https://github.com/riscv-collab/riscv-gnu-toolchain
+
+***2. RISC-V Emulator:*** For emulating program_new locally.
+```
+apt-get install qemu-user-static
+```
+
+## IoT Device Execution (To execute on ESP32 Microcontroller)
+### Prerequisites
+***1. Arduino Toolchain:*** For compiling C++ code.
+
+
+#### A. Install GCC Compiler
+
+
 
 ### B. Install RISC-V Toolchain 
 1. **Ubuntu**:
