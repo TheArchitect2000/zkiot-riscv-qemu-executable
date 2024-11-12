@@ -26,7 +26,7 @@ This project provides a framework for compiling, executing, and committing C++ u
 
 ## Table of Contents
 
-1. Local Execution (Using RISC-V Emulator)
+1. [Local Execution (Using RISC-V Emulator)](#local-execution-using-risc-v-emulator)  
    - [Prerequisites](#prerequisites)  
    - [Step 1: Writing a C++ Program](#step-1-writing-a-c-program)  
    - [Step 2: Compile and Generate an Assembly File](#step-2-compile-and-generate-an-assembly-file)  
@@ -35,7 +35,7 @@ This project provides a framework for compiling, executing, and committing C++ u
    - [Step 5: Download and Execute `commitmentGenerator`](#step-5-download-and-execute-commitmentgenerator)  
    - [Step 6: Compile and Execute](#step-6-compile-and-execute)  
 
-2. IoT Device Execution (Using ESP32 Microcontroller)
+2. [IoT Device Execution (Using ESP32 Microcontroller)](#iot-device-execution-using-esp32-microcontroller)  
    - [Prerequisites](#prerequisites-1)  
    - [Step 1: Writing a C++ Program](#step-1-writing-a-c-program-1)  
    - [Step 2: Compile and Generate an Assembly File](#step-2-compile-and-generate-an-assembly-file-1)  
