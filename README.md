@@ -177,10 +177,21 @@ riscv64-unknown-elf-g++ program_new.s polynomial.cpp -o program -lstdc++
 qemu-riscv64-static program
 ```
 
-
 ## IoT Device Execution (To execute on ESP32 Microcontroller)
 ### Prerequisites
-***1. Arduino Toolchain:*** For compiling C++ code.
+***Arduino Toolchain:*** For compiling C++ code.
+Follow the instructions from https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html to install the Arduino ESP32 toolchain.
+
+
+
+
+
+
+
+
+
+
+
 <!---
 
 
