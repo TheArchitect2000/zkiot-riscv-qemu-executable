@@ -39,14 +39,14 @@ This project provides a framework for compiling, executing, and committing C++ u
 - [Troubleshooting](#troubleshooting)
 
 
-## Step 1. Prerequisites
+## Prerequisites
 1. **To execute on Local Computer RISC-V Emulator**
    
    A. ***GCC Compiler***: For compiling C++ code.
    
-   B. ***RISC-V Toolchain***: Required for cross-compilation if running on IoT devices.
+   B. ***RISC-V Emulator***: For emulating program_new locally.
    
-3. **To execute on ESP32 Microcontroller**
+2. **To execute on ESP32 Microcontroller**
    
    C. ***Arduino Toolchain***: For compiling C++ code.
 
