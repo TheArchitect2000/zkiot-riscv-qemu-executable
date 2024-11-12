@@ -167,9 +167,18 @@ This command will prompt you to enter the path and filenames for `program.s`, `c
   ...
 ```
 
+## Step 6. Compile and Execute
+### A. Assemble and link the new code:
+```
+riscv64-unknown-elf-g++ program_new.s polynomial.cpp -o program -lstdc++
+```
+### B. Run the executable:
+```
+qemu-riscv64-static program
+```
 
 
-
+<!---
 
 
 
@@ -277,3 +286,4 @@ For running the program on an IoT device, follow these steps.
 - **Cross-Compilation Errors**: Verify that the RISC-V toolchain is correctly installed and configured.
 - **Commitment Upload Issues**: Ensure the `commitmentGenerator` and blockchain client are correctly set up.
 
+--->
