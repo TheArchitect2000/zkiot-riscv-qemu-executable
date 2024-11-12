@@ -25,15 +25,26 @@ You can execute your program in two ways:<br>
 This project provides a framework for compiling, executing, and committing C++ user programs. The framework supports both local (computer) and IoT device execution. After executing the program, the final commitment is uploaded to the blockchain to ensure traceability and security.
 
 ## Table of Contents
-- [Local Execution](#local-execution)
-  - [Step 1: Generate the Assembly File](#step-1-generate-the-assembly-file)
-  - [Step 2: Generate Commitment and New Code](#step-2-generate-commitment-and-new-code)
-  - [Step 3: Compile and Execute](#step-3-compile-and-execute)
-- [IoT Device Execution](#iot-device-execution)
-  - [Step 1: Generate the Assembly File](#step-1-generate-the-assembly-file-1)
-  - [Step 2: Generate Commitment and New Code](#step-2-generate-commitment-and-new-code-1)
-  - [Step 3: Cross-Compile and Upload](#step-3-cross-compile-and-upload)
-- [Troubleshooting](#troubleshooting)
+
+1. [Local Execution (Using RISC-V Emulator)](#local-execution-using-risc-v-emulator)  
+   - [Prerequisites](#prerequisites)  
+   - [Step 1: Writing a C++ Program](#step-1-writing-a-c-program)  
+   - [Step 2: Compile and Generate an Assembly File](#step-2-compile-and-generate-an-assembly-file)  
+   - [Step 3: Download and Edit `device_config.json`](#step-3-download-and-edit-device_configjson)  
+   - [Step 4: Download the `setupX.json` File](#step-4-download-the-setupxjson-file)  
+   - [Step 5: Download and Execute `commitmentGenerator`](#step-5-download-and-execute-commitmentgenerator)  
+   - [Step 6: Compile and Execute](#step-6-compile-and-execute)  
+
+2. [IoT Device Execution (Using ESP32 Microcontroller)](#iot-device-execution-using-esp32-microcontroller)  
+   - [Prerequisites](#prerequisites-1)  
+   - [Step 1: Writing a C++ Program](#step-1-writing-a-c-program-1)  
+   - [Step 2: Compile and Generate an Assembly File](#step-2-compile-and-generate-an-assembly-file-1)  
+   - [Step 3: Download and Edit `device_config.json`](#step-3-download-and-edit-device_configjson-1)  
+   - [Step 4: Download the `setupX.json` File](#step-4-download-the-setupxjson-file-1)  
+   - [Step 5: Download and Execute `commitmentGenerator`](#step-5-download-and-execute-commitmentgenerator-1)  
+   - [Step 6: Compile and Execute](#step-6-compile-and-execute-1)  
+
+
 
 ## Local Execution (To execute on Local Computer using RISC-V Emulator)
 ### Prerequisites
