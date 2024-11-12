@@ -41,22 +41,42 @@ This project provides a framework for compiling, executing, and committing C++ u
 
 ## Step 1. Prerequisites
 1. **To execute on Local Computer RISC-V Emulator**
+   
    A. ***GCC Compiler***: For compiling C++ code.
+   
    B. ***RISC-V Toolchain***: Required for cross-compilation if running on IoT devices.
-2. **To execute on ESP32 Microcontroller**
+   
+3. **To execute on ESP32 Microcontroller**
+   
    C. ***Arduino Toolchain***: For compiling C++ code.
 
 ### A. Install GCC Compiler
+
 1. **Ubuntu**:
+   to install the RISC-V GNU Compiler Toolchain follow the instructions from https://github.com/riscv-collab/riscv-gnu-toolchain or use the instructions below
+
 ```
 sudo apt update
-sudo apt install gcc g++ -y
+git clone https://github.com/riscv/riscv-gnu-toolchain
 ```
+This repository uses submodules, but submodules will fetch automatically on demand, so `--recursive` or `git submodule update --init --recursive` is not needed.
+
+**Warning: git clone takes around 6.65 GB of disk and download size**
+
+Several standard packages are needed to build the toolchain.
+
+On Ubuntu, executing the following command should suffice:
+```
+sudo apt-get install autoconf automake autotools-dev curl python3 python3-pip libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev ninja-build git cmake libglib2.0-dev libslirp-dev
+```
+
 2. **macOS**:
+
 Install Xcode Command Line Tools, which include GCC:
 ```
 xcode-select --install
 ```
+
 ### B. Install RISC-V Toolchain 
 1. **Ubuntu**:
 ```
