@@ -78,7 +78,7 @@ apt-get install qemu-user-static
 #### macOS:
 To install the RISC-V GNU Compiler and Toolchain follow the instructions from https://github.com/riscv-collab/riscv-gnu-toolchain
 
-## Step 1. Writing a C++ program
+### Step 1. Writing a C++ program
 Write a C++ Program for GCC Compiler and Save it as program.cpp 
 ```
 // Example program.cpp for GCC
@@ -101,7 +101,7 @@ int main() {
 }
 ```
 
-## Step 2. Compile and Generate an assembly file
+### Step 2. Compile and Generate an assembly file
 Compile the `program.cpp`
 For RISC-V32:
  ```
@@ -111,8 +111,8 @@ For RISC-V64:
  ```
  riscv64-unknown-elf-g++ -S program.cpp -o program.s -lstdc++
  ```
-## Step 3. Download and Edit `device_config.json` 
-### A. Download device_config.json from this repository and edit the parameters.
+### Step 3. Download and Edit `device_config.json` 
+#### A. Download device_config.json from this repository and edit the parameters.
 ```
 {
   "class": 32-bit Integer,
@@ -123,14 +123,14 @@ For RISC-V64:
   "code_block": 64-bit Array
 }
 ```
-### B. Save device_config.json on your computer
+#### B. Save device_config.json on your computer
 
-## Step 4. Download the `setupX.json` file
+### Step 4. Download the `setupX.json` file
 Download the `setupX.json` file from this repository and save it in the same directory as `device_config.json`. Ensure that in `setupX.json`, the `X` matches your class number.
 
-## Step 5. Download and Execute `commitmentGenerator` 
-### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
-### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `setupX.json`:
+### Step 5. Download and Execute `commitmentGenerator` 
+#### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
+#### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `setupX.json`:
 ```
 ./commitmentGenerator
 ```
@@ -167,26 +167,26 @@ This command will prompt you to enter the path and filenames for `program.s`, `c
   ...
 ```
 
-## Step 6. Compile and Execute
-### A. Assemble and link the new code:
+### Step 6. Compile and Execute
+#### A. Assemble and link the new code:
 ```
 riscv64-unknown-elf-g++ program_new.s polynomial.cpp -o program -lstdc++
 ```
-### B. Run the executable:
+#### B. Run the executable:
 ```
 qemu-riscv64-static program
 ```
 
 
+## IoT Device Execution (To execute on ESP32 Microcontroller)
+### Prerequisites
+***1. Arduino Toolchain:*** For compiling C++ code.
 <!---
 
 
 
 
 
-## IoT Device Execution (To execute on ESP32 Microcontroller)
-### Prerequisites
-***1. Arduino Toolchain:*** For compiling C++ code.
 
 
 
@@ -236,7 +236,7 @@ void loop() {
    <b>Upload Commitment to Blockchain:</b> Use the web app panel to upload <b>program_commitment.json</b> to the blockchain, ensuring the integrity of your program.<br>
    <b>Place the Parameter File:</b> Ensure that <b>program_param.json</b> is placed in the same directory as program_new to maintain consistency between the program and its parameters.
 
-## Step 7. IoT Device Execution
+### Step 7. IoT Device Execution
 
 For running the program on an IoT device, follow these steps.
 
