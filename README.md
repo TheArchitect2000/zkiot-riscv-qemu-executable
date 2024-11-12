@@ -128,8 +128,41 @@ For RISC-V64:
 ## Step 4. Download the `setupX.json` file
 Download the `setupX.json` file from this repository and save it in the same directory as `device_config.json`. Ensure that in `setupX.json`, the `X` matches your class number.
 
-
-
+## Step 5. Download and Execute `commitmentGenerator` 
+### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
+### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `setupX.json`:
+```
+./commitmentGenerator
+```
+This command will prompt you to enter the path and filenames for `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, `setupX.json`, and `program_new.s` (the output file for the assembly code).
+- `program_new.s` - New generated assembly file with added macros.
+```
+  ....
+  jal store_register_instances
+  mul s2, s2, s3    // user code
+  la t0, x18_array
+  sw x18, 4(t0)
+  addi s2, s2, 11    // user code
+  la t0, x18_array
+  sw x18, 8(t0)
+  mul s2, s2, s4    // user code
+  la t0, x18_array
+  sw x18, 12(t0)
+  mul s2, s2, s4    // user code
+  la t0, x18_array
+  sw x18, 16(t0)
+  la a0, z_array
+  li t0, 1
+  sw t0, 0(a0)
+  la a1, x0_array
+  lw t0, 0(0)
+  sw t0, 4(a0)
+  la a1, x1_array
+  lw t0, 0(1)
+  sw t0, 8(a0)
+  ....
+  ....
+```
 
 
 
@@ -176,7 +209,7 @@ void loop() {
 
 ## Step 6. Download and Execute `commitmentGenerator` 
 ### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
-### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `device_config.json`, and `setup.json`:
+### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `setupX.json`:
 ```
 commitmentGenerator setup.json deviceConfig.json program.s
 ```
