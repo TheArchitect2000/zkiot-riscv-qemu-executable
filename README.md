@@ -183,10 +183,106 @@ qemu-riscv64-static program
 Follow the instructions from https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html to install the Arduino ESP32 toolchain.
 
 
+### Step 1. Writing a C++ program
+Write a C++ Program for GCC Compiler and Save it as program.cpp 
+```
+// Example program.cpp for GCC
+#include "fidesinnova.h"
 
+void setup() {
+    int result;
 
+    asm volatile (
+        "li s2, 4\n"
+        "li s3, 5\n"
+        "li s4, 26\n"
+        "mul s2, s2, s3\n"
+        "addi s2, s2, 11\n"
+        "mul s2, s2, s4\n"
+        "mul s2, s2, s4\n"
+    );
+    proofGenerator();
+    return 0;
+}
 
+void loop() {
+}
+```
 
+### Step 2. Compile and Generate an assembly file
+Compile the `program.ino`
+***For ESP32-C3, compile `program.ino` using Arduino GUI to generate 'program.ino.elf'.***
+***Then, Run the following command to generate the 'program.s' assembly file.***
+ ```
+ riscv32-esp-elf-objdump.exe -d program.ino.elf > program.s
+ ```
+### Step 3. Download and Edit `device_config.json` 
+#### A. Download device_config.json from this repository and edit the parameters.
+```
+{
+  "class": 32-bit Integer,
+  "iot_manufacturer_name": String,
+  "iot_device_name": String,
+  "device_hardware_version": String,
+  "firmware_version": String,
+  "code_block": 64-bit Array
+}
+```
+#### B. Save device_config.json on your computer
+
+### Step 4. Download the `setupX.json` file
+Download the `setupX.json` file from this repository and save it in the same directory as `device_config.json`. Ensure that in `setupX.json`, the `X` matches your class number.
+
+### Step 5. Download and Execute `commitmentGenerator` 
+#### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
+#### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `setupX.json`:
+```
+./commitmentGenerator
+```
+This command will prompt you to enter the path and filenames for `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, `setupX.json`, and `program_new.s` (the output file for the assembly code).
+- `program_commitment.json` - The commitment file to be uploaded to the blockchain.
+- `program_param.json` - Additional parameters file that accelerates proof generation program.
+- `program_new.s` - New generated assembly file with added macros.
+```
+// program_new.s
+  ....
+  jal store_register_instances
+  mul s2, s2, s3    // user code
+  la t0, x18_array
+  sw x18, 4(t0)
+  addi s2, s2, 11    // user code
+  la t0, x18_array
+  sw x18, 8(t0)
+  mul s2, s2, s4    // user code
+  la t0, x18_array
+  sw x18, 12(t0)
+  mul s2, s2, s4    // user code
+  la t0, x18_array
+  sw x18, 16(t0)
+  la a0, z_array
+  li t0, 1
+  sw t0, 0(a0)
+  la a1, x0_array
+  lw t0, 0(0)
+  sw t0, 4(a0)
+  la a1, x1_array
+  lw t0, 0(1)
+  sw t0, 8(a0)
+  ...
+  ...
+```
+
+### Step 6. Compile and Execute
+#### A. Assemble and link the new code:
+```
+riscv32-esp-elf-as -o program_new.o program_new.s
+riscv32-esp-elf-ld -o program.elf program_new.o -T esp32_out.ld
+```
+#### B. Convert the program to a binary format suitable for your IoT device:
+```
+riscv32-esp-elf-objcopy -O binary program_new.elf program_new.bin
+```
+#### C. Upload `program_new.bin` to your IoT device and execute it.
 
 
 
@@ -219,73 +315,15 @@ void loop() {
 ```
 
 
-### B. Compile `program.ino` 
-   ***Compile `program.ino` using Arduino GUI to generate 'program.ino.elf'.***
-   ***Then, Run the following command to generate the 'program.s' assembly file.***
-   ```
-    riscv32-esp-elf-objdump.exe -d program.ino.elf > program.s
-   ```
 
 
 
-
-
-
-### C. Compile and Execute
-
-1. Assemble and link the new code:
-   ```
-   riscv64-unknown-elf-as program_new.s -o program_new.o
-   riscv64-unknown-elf-ld program_new.o -o program_new
-   ```
-2. Run the executable:
-   ```
-   file program_new qemu-riscv64 ./program_new
-   ```
 3. Final Tasks:<br>
    <b>Execute the Program:</b> Run the <b>program_new</b> file on your chosen platform (either locally or on an IoT device).<br>
    <b>Upload Commitment to Blockchain:</b> Use the web app panel to upload <b>program_commitment.json</b> to the blockchain, ensuring the integrity of your program.<br>
    <b>Place the Parameter File:</b> Ensure that <b>program_param.json</b> is placed in the same directory as program_new to maintain consistency between the program and its parameters.
 
 ### Step 7. IoT Device Execution
-
-For running the program on an IoT device, follow these steps.
-
-### A. Generate the Assembly File
-
-1. Write your C++ program in `program.cpp` as shown above.
-
-2. Cross-compile `program.cpp` for RISC-V (or your target architecture) to generate an assembly file:
-   ```
-   riscv32-esp-elf-objdump.exe -d program.elf > program.s
-   ```
-
-#### B. Generate Commitment and New Code
-
-1. Run the Commitment Generator: Open your terminal or command prompt and navigate to the directory containing your program.s, commitment_generator.exe, and device_config.json:
-   ```
-   commitmentGenerator program.s deviceConfig.json
-   ```
-   - This command outputs:
-     - `program_new.s` - New generated assembly file.
-     - `program_commitment.json` - The commitment file for blockchain upload.
-     - `program_param.json` - Additional parameters file if required.
-
-#### C. Cross-Compile and Upload
-
-1. Assemble and link the new code:
-   ```
-   riscv32-esp-elf-as -o program_new.o program_new.s
-   riscv32-esp-elf-ld -o program.elf program_new.o -T esp32_out.ld
-      ```
-
-2. Convert the program to a binary format suitable for your IoT device:
-   ```
-   riscv32-esp-elf-objcopy -O binary program_new.elf program_new.bin
-   ```
-
-3. Upload `program_new.bin` to your IoT device and execute it.
-
 4. Final Tasks:<br>
    <b>Execute the Program:</b> Run the <b>program_new</b> file on your chosen platform (either locally or on an IoT device).<br>
    <b>Upload Commitment to Blockchain:</b> Use the web app panel to upload <b>program_commitment.json</b> to the blockchain, ensuring the integrity of your program.<br>
