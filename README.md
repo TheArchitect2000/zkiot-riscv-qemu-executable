@@ -71,49 +71,71 @@ echo 'export PATH=/opt/riscv/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-#### macOS:
-To install the RISC-V GNU Compiler and Toolchain follow the instructions from https://github.com/riscv-collab/riscv-gnu-toolchain
-
 ***2. RISC-V Emulator:*** For emulating program_new locally.
 ```
 apt-get install qemu-user-static
 ```
+#### macOS:
+To install the RISC-V GNU Compiler and Toolchain follow the instructions from https://github.com/riscv-collab/riscv-gnu-toolchain
+
+## Step 1. Writing a C++ program
+Write a C++ Program for GCC Compiler and Save it as program.cpp 
+```
+// Example program.cpp for GCC
+#include "fidesinnova.h"
+
+int main() {
+    int result;
+
+    asm volatile (
+        "li s2, 4\n"
+        "li s3, 5\n"
+        "li s4, 26\n"
+        "mul s2, s2, s3\n"
+        "addi s2, s2, 11\n"
+        "mul s2, s2, s4\n"
+        "mul s2, s2, s4\n"
+    );
+    proofGenerator();
+    return 0;
+}
+```
+
+## Step 2. Compile and Generate an assembly file
+Compile the `program.cpp`
+For RISC-V32:
+ ```
+ riscv64-unknown-elf-g++ -S program.cpp -o program.s -march=rv32gc -mabi=ilp32 -lstdc++
+ ```
+For RISC-V64:
+ ```
+ riscv64-unknown-elf-g++ -S program.cpp -o program.s -lstdc++
+ ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## IoT Device Execution (To execute on ESP32 Microcontroller)
 ### Prerequisites
 ***1. Arduino Toolchain:*** For compiling C++ code.
 
 
-#### A. Install GCC Compiler
 
 
-
-### B. Install RISC-V Toolchain 
-1. **Ubuntu**:
-```
-sudo apt install gcc-riscv64-unknown-elf g++-riscv64-unknown-elf
-```
-2. **macOS**:
-Install Xcode Command Line Tools, which include GCC:
-```
-brew tap riscv-software-src/homebrew-riscv
-brew install riscv-software-src/riscv/riscv-tools
-```
 ### C. Install Arduino Toolchain 
 ***Follow the instruction from https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html to install the Arduino ESP32 toolchain.***
 
-
-## Step 2. Writing a C++ program
-
-### A. Write a C++ Program for GCC Compiler and Save it as program.cpp 
-```
-// Example program.cpp for gcc
-int main() {
-  for(int i = 297; i < 10000;){
-    i += 383;
-  }
-}
-```
 ### B. Write a C++ Program for Arduino Compiler and Save it as program.ino 
 ```
 // Example program.ino for Arduino
