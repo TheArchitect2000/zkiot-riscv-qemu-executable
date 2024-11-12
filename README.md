@@ -111,9 +111,22 @@ For RISC-V64:
  ```
  riscv64-unknown-elf-g++ -S program.cpp -o program.s -lstdc++
  ```
+## Step 3. Download and Edit `device_config.json` 
+### A. Download device_config.json from this repository and edit the parameters.
+```
+{
+  "class": 32-bit Integer,
+  "iot_manufacturer_name": String,
+  "iot_device_name": String,
+  "device_hardware_version": String,
+  "firmware_version": String,
+  "code_block": 64-bit Array
+}
+```
+### B. Save device_config.json on your computer
 
-
-
+## Step 4. Download the `setupX.json` file
+Download the `setupX.json` file from this repository and save it in the same directory as `device_config.json`. Ensure that in `setupX.json`, the `X` matches your class number.
 
 
 
@@ -149,12 +162,7 @@ void loop() {
 }
 ```
 
-    
-## Step 3. Compile and Generate an assembly file
-### A. Compile `program.cpp` 
-   ```
-   riscv64-unknown-elf-g++ -S program.cpp -o program.s  -march=rv32gc -mabi=ilp32
-   ```
+
 ### B. Compile `program.ino` 
    ***Compile `program.ino` using Arduino GUI to generate 'program.ino.elf'.***
    ***Then, Run the following command to generate the 'program.s' assembly file.***
@@ -162,22 +170,9 @@ void loop() {
     riscv32-esp-elf-objdump.exe -d program.ino.elf > program.s
    ```
 
-## Step 4. Download and Edit `device_config.json` 
-### A. Download device_config.json from this repository and edit the parameters.
-```
-{
-  "Class": 32-bit Integer,
-  "IoT_Manufacturer_Name": String,
-  "IoT_Device_Name": String,
-  "Device_Hardware_Version": float,
-  "Firmware_Version": float,
-  "Lines": 64-bit Array
-}
-```
-### B. Save device_config.json on your computer
 
-## Step 5. Download the `setup.json` file
-### A. Download the 'setup.json' from this repository and save it in the same folder with device_config.json
+
+
 
 ## Step 6. Download and Execute `commitmentGenerator` 
 ### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
