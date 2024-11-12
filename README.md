@@ -135,8 +135,11 @@ Download the `setupX.json` file from this repository and save it in the same dir
 ./commitmentGenerator
 ```
 This command will prompt you to enter the path and filenames for `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, `setupX.json`, and `program_new.s` (the output file for the assembly code).
+- `program_commitment.json` - The commitment file to be uploaded to the blockchain.
+- `program_param.json` - Additional parameters file that accelerates proof generation program.
 - `program_new.s` - New generated assembly file with added macros.
 ```
+// program_new.s
   ....
   jal store_register_instances
   mul s2, s2, s3    // user code
@@ -160,8 +163,8 @@ This command will prompt you to enter the path and filenames for `program.s`, `c
   la a1, x1_array
   lw t0, 0(1)
   sw t0, 8(a0)
-  ....
-  ....
+  ...
+  ...
 ```
 
 
@@ -207,39 +210,6 @@ void loop() {
 
 
 
-## Step 6. Download and Execute `commitmentGenerator` 
-### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
-### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `setupX.json`:
-```
-commitmentGenerator setup.json deviceConfig.json program.s
-```
-- This command outputs:
-- `program_new.s` - New generated assembly file with added macros.
-```
-{
-  mv 0x10, x0
-  mv 0x11, x1
-  mv 0x12, x2
-  mv 0x13, x3
-  // TODO: Use the snapshot assembly code instead of "mv 0x10, x0"... .
-  // lib.snapshot
-
-  ....
-  // One instruction like ADDI, MUL, etc..
-
-  mv 0x10, x0
-  mv 0x11, x1
-  mv 0x12, x2
-  mv 0x13, x3
-  // TODO: Use the snapshot assembly code instead of "mv 0x10, x0"... .
-  // lib.snapshot
-
-  // TODO: Adding the proofGenerator assembly function here.
-  // lib.proofGenerator
-}
-```
-- `program_commitment.json` - The commitment file to be uploaded on blockchain.
-- `program_param.json` - Additional parameters file that accelerate proof generation program.
 
 ### C. Compile and Execute
 
