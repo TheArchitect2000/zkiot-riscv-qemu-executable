@@ -191,6 +191,11 @@ riscv64-unknown-elf-g++ program_new.s polynomial.cpp -o program -lstdc++
 ```
 
 #### B. Run the executable:
+For RISC-V32:
+```
+qemu-riscv32-static program
+```
+For RISC-V64:
 ```
 qemu-riscv64-static program
 ```
