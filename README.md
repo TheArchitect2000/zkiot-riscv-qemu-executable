@@ -181,9 +181,15 @@ This command will prompt you to enter the path and filenames for `program.s`, `c
 
 ### Step 6. Compile and Execute
 #### A. Assemble and link the new code:
+For RISC-V32:
+```
+riscv32-unknown-elf-g++ -march=rv32im -mabi=ilp32 program_new.s polynomial.cpp -o program -lstdc++
+```
+For RISC-V64:
 ```
 riscv64-unknown-elf-g++ program_new.s polynomial.cpp -o program -lstdc++
 ```
+
 #### B. Run the executable:
 ```
 qemu-riscv64-static program
