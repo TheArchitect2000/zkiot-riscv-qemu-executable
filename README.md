@@ -127,7 +127,7 @@ For RISC-V64:
 #### A. Download device_config.json from this repository and edit the parameters.
 ```
 {
-  "class": 32-bit Integer,
+  "Class": 32-bit Integer,
   "iot_manufacturer_name": String,
   "iot_device_name": String,
   "device_hardware_version": String,
