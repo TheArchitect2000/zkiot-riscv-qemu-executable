@@ -108,7 +108,6 @@ int main() {
         "mul s2, s2, s4\n"
         "mul s2, s2, s4\n"
     );
-    proofGenerator();
     return 0;
 }
 ```
