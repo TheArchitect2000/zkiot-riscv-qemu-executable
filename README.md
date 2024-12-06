@@ -372,6 +372,11 @@ setup(
 ```
 ### 1.3 Compile with Cython
 Run the following command to generate the C code:
+(pip3 install cython)
+sudo apt-get install libc6-dev-riscv64-cross
+sudo apt-get install libpython3-dev-riscv64-cross
+riscv64-unknown-elf-gcc --print-sysroot
+
 ```
 python3 setup.py build_ext --inplace
 ```
@@ -387,6 +392,8 @@ RISC-V compiler such as riscv64-unknown-elf-g++ or riscv32-unknown-elf-gcc.
 Use the RISC-V compiler to generate assembly code. If your C file is test.c, run:
 
 ```
+riscv64-linux-gnu-gcc -march=rv32gc -mabi=ilp32 -I/usr/include/python3.8  -I/usr/include  -I/usr/riscv64-linux-gnu/include/  -o demo3asembly.s -S demo3.
+riscv64-unknown-elf-gcc -S demo3.c -o demo3asembly.s -march=rv32gc -mabi=ilp32 -I/usr/include -I/usr/include/python3.8
 riscv64-unknown-elf-gcc -S test.c -o test.s -march=rv32gc -mabi=ilp32
 ```
 -S: Generates assembly code.<br>
