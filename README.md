@@ -347,7 +347,7 @@ void loop() {
 
 
 
-
+--->
 
 
 # Converting Python Code to C and Compiling for RISC-V Architecture
@@ -427,7 +427,7 @@ qemu-riscv32 test.elf
 - RISC-V is commonly used in embedded systems, so this process is typically done in such environments.<br>
 - If you have questions about dependencies or encounter errors, please provide additional details about your environment.<br>
 
---->
+
 
 
 
