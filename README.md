@@ -31,7 +31,7 @@ This project provides a framework for compiling, executing, and committing C++ u
    - [Step 1: Writing a C++ Program](#step-1-writing-a-c-program)  
    - [Step 2: Compile and Generate an Assembly File](#step-2-compile-and-generate-an-assembly-file)  
    - [Step 3: Download and Edit `device_config.json`](#step-3-download-and-edit-device_configjson)  
-   - [Step 4: Download the `setupX.json` File](#step-4-download-the-setupxjson-file)  
+   - [Step 4: Download the `setupN.json` File](#step-4-download-the-setupNjson-file)  
    - [Step 5: Download and Execute `commitmentGenerator`](#step-5-download-and-execute-commitmentgenerator)  
    - [Step 6: Compile and Execute](#step-6-compile-and-execute)  
 
@@ -40,7 +40,7 @@ This project provides a framework for compiling, executing, and committing C++ u
    - [Step 1: Writing a C++ Program](#step-1-writing-a-c-program-1)  
    - [Step 2: Compile and Generate an Assembly File](#step-2-compile-and-generate-an-assembly-file-1)  
    - [Step 3: Download and Edit `device_config.json`](#step-3-download-and-edit-device_configjson-1)  
-   - [Step 4: Download the `setupX.json` File](#step-4-download-the-setupxjson-file-1)  
+   - [Step 4: Download the `setupN.json` File](#step-4-download-the-setupNjson-file-1)  
    - [Step 5: Download and Execute `commitmentGenerator`](#step-5-download-and-execute-commitmentgenerator-1)  
    - [Step 6: Compile and Execute](#step-6-compile-and-execute-1)  
 
@@ -94,19 +94,19 @@ To install the RISC-V GNU Compiler and Toolchain follow the instructions from ht
 Write a C++ Program for GCC Compiler and Save it as program.cpp 
 ```
 // Example program.cpp for GCC
-#include "fidesinnova.h"
+#include "lib/fidesinnova.h"
 
 int main() {
     int result;
 
     asm volatile (
-        "li s2, 4\n"
-        "li s3, 5\n"
-        "li s4, 26\n"
-        "mul s2, s2, s3\n"
-        "addi s2, s2, 11\n"
-        "mul s2, s2, s4\n"
-        "mul s2, s2, s4\n"
+        "li s1, 1\n"
+        "li s2, 1\n"
+        "mul s2, s2, s1\n"
+        "addi s2, s2, 1\n"
+        "mul s2, s2, s1\n"
+        ...
+        ...
     );
     return 0;
 }
@@ -126,55 +126,67 @@ For RISC-V64:
 #### A. Download device_config.json from this repository and edit the parameters.
 ```
 {
-  "Class": 32-bit Integer,
-  "iot_manufacturer_name": String,
+  "class": 32-bit Integer,
+  "iot_developer_name": String,
   "iot_device_name": String,
   "device_hardware_version": String,
   "firmware_version": String,
   "code_block": 64-bit Array
 }
 ```
+The `class` is a 32-bit integer that indicates the number of gates in your ZKP. You can read more about it at [FidesInnova Documentation](https://fidesinnova-1.gitbook.io/fidesinnova-docs/zero-knowledge-proof-zkp-scheme/1-setup-phase).
+The `code_block` is a two-part 64-bit array. It should contain the starting and ending line numbers of the section for which you want to create a ZKP from the `program.s` file.
+
 #### B. Save device_config.json on your computer
 
-### Step 4. Download the `setupX.json` file
-Download the `setupX.json` file from this repository and save it in the same directory as `device_config.json`. Ensure that in `setupX.json`, the `X` matches your class number.
+### Step 4. Download the necessary files
+Download the `data` folder from this repository and save it in the same directory as `device_config.json`. Inside, you can find the `setupN.json` files, where `N` matches your class number.
+Download the `class.json` file in the same directory.
 
 ### Step 5. Download and Execute `commitmentGenerator` 
 #### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
-#### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `setupX.json`:
+#### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `data/setupN.json`:
+at this point your directory must look like this:
+```
+your_project_directory/ |
+                        ├── class.json
+                        ├── commitmentGenerator
+                        ├── device_config.json
+                        ├── data/ |
+                                  ├── setup1.json │
+                                  ├── setup2.json │
+                                  ├── setup3.json │
+                                  └── ... (other setupN.json files)
+                        ├── program.cpp
+                        ├── program.s
+                        └── ... (other project files)
+```
+
+Now run the commitmentGenerator
 ```
 ./commitmentGenerator
 ```
-This command will prompt you to enter the path and filenames for `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, `setupX.json`, and `program_new.s` (the output file for the assembly code).
-- `program_commitment.json` - The commitment file to be uploaded to the blockchain.
-- `program_param.json` - Additional parameters file that accelerates proof generation program.
+The `commitmentGenerator` will create the following files:
+<!-- This command will prompt you to enter the path and filenames for `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, `setupN.json`, and `program_new.s` (the output file for the assembly code). -->
+- `data/program_commitment.json` - The commitment file to be uploaded to the blockchain (use the panel to upload the file to the blockchain).
+- `data/program_param.json` - Additional parameters file that accelerates proof generation program.
 - `program_new.s` - New generated assembly file with added macros.
+
 ```
 // program_new.s
   ....
   jal store_register_instances
-  mul s2, s2, s3    // user code
+  mul s2, s2, s1    #  User Code
   la t0, x18_array
   sw x18, 4(t0)
-  addi s2, s2, 11    // user code
+  addi s2, s2, 1    #  User Code
   la t0, x18_array
   sw x18, 8(t0)
-  mul s2, s2, s4    // user code
+  mul s2, s2, s1    #  User Code
   la t0, x18_array
   sw x18, 12(t0)
-  mul s2, s2, s4    // user code
-  la t0, x18_array
-  sw x18, 16(t0)
-  la a0, z_array
-  li t0, 1
-  sw t0, 0(a0)
-  la a1, x0_array
-  lw t0, 0(0)
-  sw t0, 4(a0)
-  la a1, x1_array
-  lw t0, 0(1)
-  sw t0, 8(a0)
   ...
+  call proofGenerator
   ...
 ```
 
@@ -182,11 +194,11 @@ This command will prompt you to enter the path and filenames for `program.s`, `c
 #### A. Assemble and link the new code:
 For RISC-V32:
 ```
-riscv32-unknown-elf-g++ -march=rv32im -mabi=ilp32 program_new.s polynomial.cpp -o program -lstdc++
+riscv32-unknown-elf-g++ -march=rv32im -mabi=ilp32 program_new.s lib/polynomial.cpp -o program -lstdc++
 ```
 For RISC-V64:
 ```
-riscv64-unknown-elf-g++ program_new.s polynomial.cpp -o program -lstdc++
+riscv64-unknown-elf-g++ program_new.s lib/polynomial.cpp -o program -lstdc++
 ```
 
 #### B. Run the executable:
@@ -198,6 +210,24 @@ For RISC-V64:
 ```
 qemu-riscv64-static program
 ```
+After running the code in QEMU, you will be prompted to enter the contents of `data/program_commitment.json`, `data/program_param.json`, `class.json`, and `data/setupN.json`. You need to enter them one by one, and after inserting each file, end it with a blank line.
+
+After finishing the proof generation, QEMU will print the proof as a JSON in the terminal. You need to copy this output into the `data/proof.json` file.
+
+To verifie the proof, simply run:
+```
+./verifier
+```
+You can also upload your proof to the blockchain and use the Fidesinnova explorer to check the verification.
+
+### Use the `wizardry`
+
+The `wizardry.sh` script automates the entire process for you. To use it, simply run:
+
+```bash
+./wizardry.sh
+```
+
 
 ## IoT Device Execution (To execute on ESP32 Microcontroller)
 ### Prerequisites
@@ -252,16 +282,16 @@ Compile the `program.ino`
 ```
 #### B. Save device_config.json on your computer
 
-### Step 4. Download the `setupX.json` file
-Download the `setupX.json` file from this repository and save it in the same directory as `device_config.json`. Ensure that in `setupX.json`, the `X` matches your class number.
+### Step 4. Download the `setupN.json` file
+Download the `setupN.json` file from this repository and save it in the same directory as `device_config.json`. Ensure that in `setupN.json`, the `X` matches your class number.
 
 ### Step 5. Download and Execute `commitmentGenerator` 
 #### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
-#### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `setupX.json`:
+#### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `setupN.json`:
 ```
 ./commitmentGenerator
 ```
-This command will prompt you to enter the path and filenames for `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, `setupX.json`, and `program_new.s` (the output file for the assembly code).
+This command will prompt you to enter the path and filenames for `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, `setupN.json`, and `program_new.s` (the output file for the assembly code).
 - `program_commitment.json` - The commitment file to be uploaded to the blockchain.
 - `program_param.json` - Additional parameters file that accelerates proof generation program.
 - `program_new.s` - New generated assembly file with added macros.
