@@ -1,8 +1,11 @@
 {
-  "Class": 2,
-  "iot_manufacturer_name": "TrustSense",
+  "class": 5,
+  "iot_developer_name": "Fidesinnova",
   "iot_device_name": "zk-MultiSensor",
   "device_hardware_version": "1.0",
   "firmware_version": "1.0",
-  "code_block": [23303, 23305]
+  "code_block": [
+    26087,
+    26118
+  ]
 }
