@@ -31,7 +31,7 @@ fi
 
 # Step 3: Read the class value from device_config.json
 echo "[3/$total_steps] Reading class value from device_config.json"
-config_file="/root/zkiot_c_source/gcc/V2.0/device_config.json"
+config_file="device_config.json"
 class_value=$(jq -r '.class' "$config_file")
 if [ -z "$class_value" ]; then
     echo "Class value not found in device_config.json"
@@ -40,7 +40,7 @@ fi
 
 # Step 4: Read n_g from class.json based on the class value
 echo "[4/$total_steps] Reading relevant info from class.json based on class value"
-class_file="/root/zkiot_c_source/gcc/V2.0/class.json"
+class_file="class.json"
 n_g=$(jq --arg class_value "$class_value" '.[$class_value].n_g' "$class_file")
 if [ -z "$n_g" ]; then
     echo "n_g not found for class $class_value in class.json"
