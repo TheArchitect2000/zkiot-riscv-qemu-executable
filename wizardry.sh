@@ -1,4 +1,15 @@
 #!/bin/bash
+# Check if jq is installed
+if ! command -v jq &> /dev/null
+then
+    echo "jq could not be found, installing jq..."
+    sudo apt-get update && sudo apt-get install -y jq
+    if [ $? -ne 0 ]; then
+        echo "Failed to install jq"
+        exit 1
+    fi
+fi
+
 
 total_steps=12
 
