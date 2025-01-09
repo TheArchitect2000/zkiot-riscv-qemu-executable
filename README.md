@@ -196,7 +196,7 @@ Now, run the `commitmentGenerator`:
 ./commitmentGenerator
 ```
 The `commitmentGenerator` will create the following files:
-- `data/program_commitment.json`: The commitment file to be uploaded to the blockchain using the **developer panel**.
+- `data/program_commitment.json`: The commitment file to be uploaded to the blockchain using the **IoT Developer Console**.
 - `data/program_param.json`: An additional parameters file that accelerates the proof generation process.
 - `program_new.s`: A newly generated assembly file with added macros.
 
@@ -248,7 +248,7 @@ To verify the proof, simply run:
 ```
 ./verifier
 ```
-Alternatively, you can upload your proof using the **developer panel** to the blockchain and use the Fidesinnova explorer to check the verification.
+Alternatively, you can upload your proof using the **IoT Developer Console** to the blockchain and use the Fidesinnova explorer to check the verification.
 
 ## IoT Device Execution (To execute on ESP32 Microcontroller)
 ### Prerequisites
