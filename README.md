@@ -90,8 +90,25 @@ apt-get install qemu-user-static
 #### macOS:
 To install the RISC-V GNU Compiler and Toolchain follow the instructions from https://github.com/riscv-collab/riscv-gnu-toolchain
 
+### Clone the Repository
+Clone the repository to your server or local machine.
+```
+git clone https://github.com/FidesInnova/zkiot.git
+cd zkiot  
+```
+
+### Use the `wizardry`
+
+The `wizardry.sh` script automates the entire process of running the sample code for you. To use it, simply run:
+
+```bash
+./wizardry.sh
+```
+
 ### Step 1. Writing a C++ program
-Write a C++ Program for GCC Compiler and Save it as program.cpp 
+Write a C++ program for the GCC Compiler and save it as `program.cpp` in the `zkiot` project folder.
+**A sample program is provided in the repository for testing purposes.**
+
 ```
 // Example program.cpp for GCC
 #include "lib/fidesinnova.h"
@@ -111,6 +128,8 @@ int main() {
     return 0;
 }
 ```
+The above example demonstrates how to use inline assembly with RISC-V instructions in a C++ program. Modify it to test other instructions.
+- Refer to the `RV32IM_ISA.md` file in the repository to view the list of currently implemented and available instructions for use.
 
 ### Step 2. Compile and Generate an assembly file
 Compile the `program.cpp`
@@ -122,56 +141,63 @@ For RISC-V64:
  ```
  riscv64-unknown-elf-g++ -S program.cpp -o program.s -lstdc++
  ```
-### Step 3. Download and Edit `device_config.json` 
-#### A. Download device_config.json from this repository and edit the parameters.
+
+### Step 3. Edit the `device_config.json`
+#### Use the `device_config.json` from this repository and edit the parameters as needed:
 ```
 {
   "class": 32-bit Integer,
-  "iot_developer_name": String,
-  "iot_device_name": String,
-  "device_hardware_version": String,
-  "firmware_version": String,
-  "code_block": 64-bit Array
+  "iot_developer_name": "String",
+  "iot_device_name": "String",
+  "device_hardware_version": "String",
+  "firmware_version": "String",
+  "code_block": "64-bit Array"
 }
 ```
-The `class` is a 32-bit integer that indicates the number of gates in your ZKP. You can read more about it at [FidesInnova Documentation](https://fidesinnova-1.gitbook.io/fidesinnova-docs/zero-knowledge-proof-zkp-scheme/1-setup-phase).
-The `code_block` is a two-part 64-bit array. It should contain the starting and ending line numbers of the section for which you want to create a ZKP from the `program.s` file.
+- **class**: A 32-bit integer indicating the number of gates in your ZKP. For more details, refer to the [Fidesinnova Documentation](https://fidesinnova-1.gitbook.io/fidesinnova-docs/zero-knowledge-proof-zkp-scheme/1-setup-phase).
+- **code_block**: A two-part 64-bit array specifying the starting and ending line numbers of the section in `program.s` for which you want to create a ZKP.
 
-#### B. Save device_config.json on your computer
 
-### Step 4. Download the necessary files
-Download the `data` folder from this repository and save it in the same directory as `device_config.json`. Inside, you can find the `setupN.json` files, where `N` matches your class number.
-Download the `class.json` file in the same directory.
+### Step 4. The Necessary Files
+Inside the `data` folder, you will find the `setupN.json` files, where `N` corresponds to your class number. 
+The `class.json` file contains critical information, including:
+- **number of gates (n_g)**: The total number of gates in your ZKP.
+- **number of inputs (n_i)**: The number of inputs to the ZKP.
+- **n**: Calculated as `n = n_i + n_g + 1`.
+- **m**: Calculated as `m = 2 * n_g`.
+- **field size (p)**: The size of the finite field used in the ZKP.
+- **generator (g)**: The generator of the field.
 
-### Step 5. Download and Execute `commitmentGenerator` 
-#### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
-#### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `data/setupN.json`:
-at this point your directory must look like this:
+Ensure you have the correct `setupN.json` file for your class to proceed with the ZKP setup.
+
+### Step 5. Execute `commitmentGenerator` 
+#### Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `data/setupN.json`:
+Ensure your directory structure looks like this:
 ```
-your_project_directory/ |
-                        ├── class.json
-                        ├── commitmentGenerator
-                        ├── device_config.json
-                        ├── data/ |
-                                  ├── setup1.json │
-                                  ├── setup2.json │
-                                  ├── setup3.json │
-                                  └── ... (other setupN.json files)
-                        ├── program.cpp
-                        ├── program.s
-                        └── ... (other project files)
+zkiot/|
+      ├── class.json
+      ├── commitmentGenerator
+      ├── device_config.json
+      ├── data/ |
+                ├── setup1.json │
+                ├── setup2.json │
+                ├── setup3.json │
+                └── ... (other setupN.json files)
+      ├── program.cpp
+      ├── program.s
+      └── ... (other project files)
 ```
 
-Now run the commitmentGenerator
+Now, run the `commitmentGenerator`:
 ```
 ./commitmentGenerator
 ```
 The `commitmentGenerator` will create the following files:
-<!-- This command will prompt you to enter the path and filenames for `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, `setupN.json`, and `program_new.s` (the output file for the assembly code). -->
-- `data/program_commitment.json` - The commitment file to be uploaded to the blockchain (use the panel to upload the file to the blockchain).
-- `data/program_param.json` - Additional parameters file that accelerates proof generation program.
-- `program_new.s` - New generated assembly file with added macros.
+- `data/program_commitment.json`: The commitment file to be uploaded to the blockchain using the **developer panel**.
+- `data/program_param.json`: An additional parameters file that accelerates the proof generation process.
+- `program_new.s`: A newly generated assembly file with added macros.
 
+The `program_new.s` will look something like this:
 ```
 // program_new.s
   ....
@@ -210,24 +236,16 @@ For RISC-V64:
 ```
 qemu-riscv64-static program
 ```
-After running the code in QEMU, you will be prompted to enter the contents of `data/program_commitment.json`, `data/program_param.json`, `class.json`, and `data/setupN.json`. You need to enter them one by one, and after inserting each file, end it with a blank line.
+After running the code in QEMU, you will be prompted to enter the contents of `data/program_commitment.json`, `data/program_param.json`, `class.json`, and `data/setupN.json`. You need to input them one by one, ensuring that each file's contents are ended with a blank line.
 
-After finishing the proof generation, QEMU will print the proof as a JSON in the terminal. You need to copy this output into the `data/proof.json` file.
+Once the proof generation is complete, QEMU will print the proof as a JSON in the terminal. Copy this output into the `data/proof.json` file.
 
-To verifie the proof, simply run:
+### Step 7. Verification
+To verify the proof, simply run:
 ```
 ./verifier
 ```
-You can also upload your proof to the blockchain and use the Fidesinnova explorer to check the verification.
-
-### Use the `wizardry`
-
-The `wizardry.sh` script automates the entire process for you. To use it, simply run:
-
-```bash
-./wizardry.sh
-```
-
+Alternatively, you can upload your proof using the **developer panel** to the blockchain and use the Fidesinnova explorer to check the verification.
 
 ## IoT Device Execution (To execute on ESP32 Microcontroller)
 ### Prerequisites
