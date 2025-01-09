@@ -55,6 +55,6 @@ The following table summarizes the current status of instruction implementation:
 
 
 ### Legend
-* ✅ **Implemented**: The instruction is fully implemented and tested.
-* 🚧 **In Progress**: The instruction is under active development.
-* 🚧 **Planned**: The instruction is planned for future development.
+- ✅ **Implemented**: The instruction is fully implemented and tested.
+- 🚧 **In Progress**: The instruction is under active development.
+- 🚧 **Planned**: The instruction is planned for future development.
