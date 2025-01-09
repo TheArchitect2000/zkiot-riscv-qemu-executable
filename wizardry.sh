@@ -10,7 +10,6 @@ then
     fi
 fi
 
-
 total_steps=12
 
 # Step 1: Compile the program.cpp to assembly
