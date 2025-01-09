@@ -27,14 +27,17 @@ This project provides a framework for compiling, executing, and committing C++ u
 ## Table of Contents
 
 1. [Local Execution (To execute on Local Computer using RISC-V Emulator)](#local-execution-to-execute-on-local-computer-using-risc-v-emulator)  
-   - [Prerequisites](#prerequisites)  
-   - [Step 1: Writing a C++ Program](#step-1-writing-a-c-program)  
-   - [Step 2: Compile and Generate an Assembly File](#step-2-compile-and-generate-an-assembly-file)  
-   - [Step 3: Download and Edit `device_config.json`](#step-3-download-and-edit-device_configjson)  
-   - [Step 4: Download the `setupN.json` File](#step-4-download-the-setupNjson-file)  
-   - [Step 5: Download and Execute `commitmentGenerator`](#step-5-download-and-execute-commitmentgenerator)  
-   - [Step 6: Compile and Execute](#step-6-compile-and-execute)  
-
+   - [Prerequisites](#prerequisites)
+   - [Clone the Repository](#clone-the-repository)
+   - [Use the `wizardry`](use-the-wizardry)
+   - [Step 1: Writing a C++ program](#step-1-writing-a-c-program)  
+   - [Step 2: Compile and Generate an assembly file](#step-2-compile-and-generate-an-assembly-file)  
+   - [Step 3: Edit `device_config.json`](#step-3-edit-device_configjson)  
+   - [Step 4: The Necessary Files](#step-4-the-necessary-files)  
+   - [Step 5: Execute `commitmentGenerator`](#step-5-execute-commitmentgenerator)  
+   - [Step 6: Compile and Execute](#step-6-compile-and-execute)
+   - [Step 7: Verification](#step-7-verification)
+   
 2. [IoT Device Execution (To execute on ESP32 Microcontroller)](#iot-device-execution-to-execute-on-esp32-microcontroller)  
    - [Prerequisites](#prerequisites-1)  
    - [Step 1: Writing a C++ Program](#step-1-writing-a-c-program-1)  
@@ -142,7 +145,7 @@ For RISC-V64:
  riscv64-unknown-elf-g++ -S program.cpp -o program.s -lstdc++
  ```
 
-### Step 3. Edit the `device_config.json`
+### Step 3. Edit `device_config.json`
 #### Use the `device_config.json` from this repository and edit the parameters as needed:
 ```
 {
