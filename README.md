@@ -14,14 +14,9 @@
 <a href="https://discord.com/invite/NQdM6JGwcs" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
 <a href="https://twitter.com/FidesInnova" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 
-This guide will help you execute your C++ program on your computer or IoT device, create a proof for your execution and submit them on blockchain for verification purposes.
-
-After preparing your development environment, there are three main steps: Program Commitment, Proof Generation, Proof verification. 
-<b>1- Computer Execution</b><br>
-<b>2- IoT Device Execution (e.g., ESP32)</b><br>
+This guide will help you to A) create a commitment for your C++ program and submit it on blockchain, B) execute your program and create a proof for your execution on your comuter or IoT device and submit the proof on blockchain, C) finally, verify the proof on blockchain via blockchain explorer.
 
 ## Table of Contents
-
 Platform 1. [Computer Execution (To execute on a Computer using RISC-V Emulator)](#local-execution-to-execute-on-local-computer-using-risc-v-emulator)  
    - [Prerequisites](#prerequisites)
    - [Clone the Repository](#clone-the-repository)
@@ -44,11 +39,9 @@ Platform 2. [IoT Device Execution (To execute on ESP32 Microcontroller)](#iot-de
    - [Step 6: Compile and Execute](#step-6-compile-and-execute-1)  
 
 
-# Platform 1. Computer Execution (To execute on Local Computer using RISC-V Emulator)
-## Step 1. Prerequisites
-### 1.1. GCC Compiler:*** For compiling C++ code.
-
-#### 1.1.A. Ubuntu:
+# Step A. Commitment Generation
+## 1.1. GCC Compiler to compile C++ programms
+### 1.1.1. Ubuntu:
 To install the RISC-V GNU Compiler and Toolchain follow the instructions from https://github.com/riscv-collab/riscv-gnu-toolchain or use the instructions below
 ```
 sudo apt update
@@ -56,16 +49,11 @@ git clone https://github.com/riscv/riscv-gnu-toolchain
 ```
 This repository uses submodules, but submodules will fetch automatically on demand, so `--recursive` or `git submodule update --init --recursive` is not needed.
 
-Warning: git clone takes around 6.65 GB of disk and download size.
-
-Several standard packages are needed to build the toolchain.
-
-On Ubuntu, executing the following command should suffice:
+Several standard packages are needed to build the toolchain. On Ubuntu, executing the following command should suffice:
 ```
 sudo apt-get install autoconf automake autotools-dev curl python3 python3-pip libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev ninja-build git cmake libglib2.0-dev libslirp-dev
 ```
 We then got to the root directory of riscv-gnu-toolchain and configured it to build the Newlib cross-compiler.
-
 ```
 cd riscv-gnu-toolchain
 ./configure --prefix=/opt/riscv
@@ -84,17 +72,17 @@ source ~/.bashrc
 ```
 apt-get install qemu-user-static
 ```
-#### 1.1.B. macOS:
+### 1.1.2. macOS:
 To install Homebrew on macOS, follow these steps:
 
-### 1.2. Install Homebrew
+#### 1.1.2.1 Install Homebrew
 Homebrew is a package manager for macOS that simplifies the installation of software.
 
-#### 1.2.1. **Run the Installation Command**:
+#### 1.1.2.1. Run the Installation Command
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-#### 1.2.2. **Additional Configuration**:
+#### 1.1.2.2. **Additional Configuration**:
 After installing Homebrew, you might need to add it to your shell profile. The installation script will provide instructions if this is necessary.
 
 For example, you might need to add the following line to your `.zshrc` or `.bash_profile`:
@@ -102,29 +90,29 @@ For example, you might need to add the following line to your `.zshrc` or `.bash
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
 source ~/.zshrc
 ```
-#### 1.2.3. **Verify the Installation**: Once the installation is complete, you can verify that Homebrew is installed by running:
+### 1.2.3. Verify the Installation**: Once the installation is complete, you can verify that Homebrew is installed by running:
 ```bash
 brew --version
 ```
 This command should display the version of Homebrew installed on your system.
 
-### 1.3. Install RISC-V Toolchain
-#### 1.3.1. **Get this tap**:
+## 1.3. Install RISC-V Toolchain
+### 1.3.1. **Get this tap**:
 ```bash
 brew tap riscv-software-src/riscv
 ```
-#### 1.3.2. **Build the toolchain**:
+### 1.3.2. **Build the toolchain**:
 ```bash
 brew install riscv-tools
 ```
-#### 1.3.3. **Verify the Installation**:
+### 1.3.3. **Verify the Installation**:
 You can verify your install was successful by:
 ```bash
 brew test riscv-tools
 ```
-### 1.4. Install Spike RISC-V Simulator
+## 1.4. Install Spike RISC-V Simulator
 Spike is an emulator for RISC-V that can run RISC-V binaries:
-#### 1.4.1. **Install Spike**:
+### 1.4.1. **Install Spike**:
 ```
 git clone https://github.com/riscv/riscv-isa-sim.git
 cd riscv-isa-sim
@@ -135,21 +123,21 @@ make
 sudo make install
 ```
 
-### 1.5. Clone the zkIoT Repository
+## 1.5. Clone the zkIoT Repository
 Clone the repository to your server or local machine.
 ```
 git clone https://github.com/FidesInnova/zkiot.git
 cd zkiot  
 ```
 
-## Step 2. Commitment Generation
-### 2.1. Writing a C++ program
+# Step 2. Commitment Generation
+## 2.1. Writing a C++ program
 Write a C++ program for the GCC Compiler and save it as `program.cpp` in the `zkiot` project folder.
 **A sample program is provided in the repository for testing purposes.**
 
 - Refer to the `RV32IM_ISA.md` file in the repository to view the list of currently implemented and available instructions for use.
 
-### 2.2. Compile and Generate an assembly file
+## 2.2. Compile and Generate an assembly file
 Compile the `program.cpp`
 For RISC-V64:
  ```
@@ -160,7 +148,7 @@ For RISC-V32:
  riscv64-unknown-elf-g++ -S program.cpp -o program.s -march=rv32gc -mabi=ilp32 -lstdc++
  ```
 
-### 2.3. Edit `device_config.json`
+## 2.3. Edit `device_config.json`
 **Use the `device_config.json` from this repository and edit the parameters as needed:**
 ```
 {
