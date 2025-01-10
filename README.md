@@ -207,11 +207,11 @@ zkiot/|
       └── ... (other project files)
 ```
 ### 2.5. Execute `commitmentGenerator` 
-### 2.5.A Ubuntu
+#### 2.5.A Ubuntu
 ```
 ./commitmentGenerator
 ```
-### 2.5.A macOS
+#### 2.5.A macOS
 ```
 ./commitmentGeneratorForMac
 ```
