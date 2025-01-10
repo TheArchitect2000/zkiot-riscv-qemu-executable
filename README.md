@@ -222,8 +222,13 @@ zkiot/|
 ```
 
 Now, run the `commitmentGenerator`:
+**Ubuntu**
 ```
 ./commitmentGenerator
+```
+**macOS**
+```
+./commitmentGeneratorForMac
 ```
 The `commitmentGenerator` will create the following files:
 - `data/program_commitment.json`: The commitment file to be uploaded to the blockchain using the **IoT Developer Console**.
@@ -270,7 +275,6 @@ For RISC-V64:
 ```
 qemu-riscv64-static program
 ```
-
 After running the code in QEMU, you will be prompted to enter the contents of `data/program_commitment.json`, `data/program_param.json`, `class.json`, and `data/setupN.json`. You need to input them one by one, ensuring that each file's contents are ended with a blank line.
 
 Once the proof generation is complete, QEMU will print the proof as a JSON in the terminal. Copy this output into the `data/proof.json` file.
@@ -282,8 +286,13 @@ spike pk program
 
 ### Step 7. Verification
 To verify the proof, simply run:
+**Ubuntu**
 ```
 ./verifier
+```
+**macOS**
+```
+./verifierForMac
 ```
 Alternatively, you can upload your proof using the **IoT Developer Console** to the blockchain and use the Fidesinnova explorer to check the verification.
 
