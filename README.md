@@ -280,11 +280,11 @@ Using Fidesinnova's node web app (e.g., panel.zksensor.tech) upload the generate
 
 ## Step 4. Proof Verification
 To verify the proof, simply run:
-### 4.A. Ubuntu
+#### 4.A. Ubuntu
 ```
 ./verifier
 ```
-### 4.B. macOS
+#### 4.B. macOS
 ```
 ./verifierForMac
 ```
@@ -295,11 +295,11 @@ Goto https://explorer.fidesinnova.io, search the submitted proof, from the menu 
 
 ## Step 4. Use the `wizardry` Script
 The `wizardry` script automates the entire process of running the sample code for you. To use it, simply run:
-### 4.A. Ubuntu
+#### 4.A. Ubuntu
 ```bash
 ./wizardry.sh
 ```
-### 4.B. macOS
+#### 4.B. macOS
 ```bash
 ./wizardryForMac.sh
 ```
