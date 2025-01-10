@@ -72,7 +72,7 @@ cd riscv-gnu-toolchain
 ./configure --prefix=/opt/riscv
 make
 ```
-**It may take a long time to install the riscv-gnu-toolchain**
+It may take a long time to install the riscv-gnu-toolchain
 
 Then add the path to the system
 
@@ -81,7 +81,7 @@ echo 'export PATH=/opt/riscv/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-***2. RISC-V Emulator:*** For emulating program_new locally.
+2. RISC-V Emulator: For emulating program_new locally.
 ```
 apt-get install qemu-user-static
 ```
