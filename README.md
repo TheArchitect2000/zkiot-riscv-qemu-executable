@@ -4,7 +4,7 @@
 
 
 
-# zk-IoT: C++ Program Execution and Blockchain Commitment for IoT devices and Local Systems
+# zk-IoT: C++ Program Execution with Verifiable Computing Feature on IoT devices and Computers
 
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
@@ -14,10 +14,9 @@
 <a href="https://discord.com/invite/NQdM6JGwcs" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
 <a href="https://twitter.com/FidesInnova" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 
+This guide will help you execute your C++ program on your computer or IoT device, create a proof for your execution and submit them on blockchain for verification purposes.
 
-This guide will help you execute your C++ program on your computer or IoT device and commit the results to the blockchain.
-
-This project provides a framework for compiling, executing, and committing C++ user programs. The framework supports both local (computer) and IoT device execution. After executing the program, the final commitment is uploaded to the blockchain to ensure traceability and security. You can execute your program in two ways:<br>
+After preparing your development environment, there are three main steps: Program Commitment, Proof Generation, Proof verification. 
 <b>1- Computer Execution</b><br>
 <b>2- IoT Device Execution (e.g., ESP32)</b><br>
 
