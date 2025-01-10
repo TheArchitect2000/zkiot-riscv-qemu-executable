@@ -17,16 +17,13 @@
 
 This guide will help you execute your C++ program on your computer or IoT device and commit the results to the blockchain.
 
-## Overview
-You can execute your program in two ways:<br>
+This project provides a framework for compiling, executing, and committing C++ user programs. The framework supports both local (computer) and IoT device execution. After executing the program, the final commitment is uploaded to the blockchain to ensure traceability and security. You can execute your program in two ways:<br>
 <b>1- Locally on your computer</b><br>
 <b>2- On an IoT device (e.g., ESP32)</b><br>
 
-This project provides a framework for compiling, executing, and committing C++ user programs. The framework supports both local (computer) and IoT device execution. After executing the program, the final commitment is uploaded to the blockchain to ensure traceability and security.
-
 ## Table of Contents
 
-1. [Local Execution (To execute on Local Computer using RISC-V Emulator)](#local-execution-to-execute-on-local-computer-using-risc-v-emulator)  
+Platform 1. [Local Execution (To execute on Local Computer using RISC-V Emulator)](#local-execution-to-execute-on-local-computer-using-risc-v-emulator)  
    - [Prerequisites](#prerequisites)
    - [Clone the Repository](#clone-the-repository)
    - [Use the `wizardry`](use-the-wizardry)
@@ -38,7 +35,7 @@ This project provides a framework for compiling, executing, and committing C++ u
    - [Step 6: Compile and Execute](#step-6-compile-and-execute)
    - [Step 7: Verification](#step-7-verification)
    
-2. [IoT Device Execution (To execute on ESP32 Microcontroller)](#iot-device-execution-to-execute-on-esp32-microcontroller)  
+Platform 2. [IoT Device Execution (To execute on ESP32 Microcontroller)](#iot-device-execution-to-execute-on-esp32-microcontroller)  
    - [Prerequisites](#prerequisites-1)  
    - [Step 1: Writing a C++ Program](#step-1-writing-a-c-program-1)  
    - [Step 2: Compile and Generate an Assembly File](#step-2-compile-and-generate-an-assembly-file-1)  
@@ -48,13 +45,11 @@ This project provides a framework for compiling, executing, and committing C++ u
    - [Step 6: Compile and Execute](#step-6-compile-and-execute-1)  
 
 
+#Platform 1. Local Execution (To execute on Local Computer using RISC-V Emulator)
+### Step 1. Prerequisites
+***1.1 GCC Compiler:*** For compiling C++ code.
 
-
-## Local Execution (To execute on Local Computer using RISC-V Emulator)
-### Prerequisites
-***1. GCC Compiler:*** For compiling C++ code.
-
-### Ubuntu:
+#### 1.1.A. Ubuntu:
 To install the RISC-V GNU Compiler and Toolchain follow the instructions from https://github.com/riscv-collab/riscv-gnu-toolchain or use the instructions below
 ```
 sudo apt update
@@ -90,17 +85,17 @@ source ~/.bashrc
 ```
 apt-get install qemu-user-static
 ```
-### macOS:
+#### 1.1.B. macOS:
 To install Homebrew on macOS, follow these steps:
 
-#### 1. Install Homebrew
+### 1.2. Install Homebrew
 Homebrew is a package manager for macOS that simplifies the installation of software.
 
-1-1. **Run the Installation Command**:
+1.2.1. **Run the Installation Command**:
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-1-2. **Additional Configuration**:
+1.2.2. **Additional Configuration**:
 After installing Homebrew, you might need to add it to your shell profile. The installation script will provide instructions if this is necessary.
 
 For example, you might need to add the following line to your `.zshrc` or `.bash_profile`:
@@ -108,29 +103,29 @@ For example, you might need to add the following line to your `.zshrc` or `.bash
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
 source ~/.zshrc
 ```
-1-3. **Verify the Installation**: Once the installation is complete, you can verify that Homebrew is installed by running:
+1.2.3. **Verify the Installation**: Once the installation is complete, you can verify that Homebrew is installed by running:
 ```bash
 brew --version
 ```
 This command should display the version of Homebrew installed on your system.
 
-#### 2. Install RISC-V Toolchain
-2-1. **Get this tap**:
+### 1.3. Install RISC-V Toolchain
+1.3.1. **Get this tap**:
 ```bash
 brew tap riscv-software-src/riscv
 ```
-2-1. **Build the toolchain**:
+1.3.2. **Build the toolchain**:
 ```bash
 brew install riscv-tools
 ```
-2-2. **Verify the Installation**:
+1.3.3. **Verify the Installation**:
 You can verify your install was successful by:
 ```bash
 brew test riscv-tools
 ```
-#### 3. Install Spike RISC-V Simulator
+#### 1.4. Install Spike RISC-V Simulator
 Spike is an emulator for RISC-V that can run RISC-V binaries:
-3-1. **Install Spike**:
+1.4.1. **Install Spike**:
 ```
 git clone https://github.com/riscv/riscv-isa-sim.git
 cd riscv-isa-sim
