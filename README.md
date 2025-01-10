@@ -150,13 +150,6 @@ git clone https://github.com/FidesInnova/zkiot.git
 cd zkiot  
 ```
 
-### Use the `wizardry`
-
-The `wizardry.sh` script automates the entire process of running the sample code for you. To use it, simply run:
-
-```bash
-./wizardry.sh
-```
 
 ### Step 1. Writing a C++ program
 Write a C++ program for the GCC Compiler and save it as `program.cpp` in the `zkiot` project folder.
@@ -295,6 +288,24 @@ To verify the proof, simply run:
 ./verifierForMac
 ```
 Alternatively, you can upload your proof using the **IoT Developer Console** to the blockchain and use the Fidesinnova explorer to check the verification.
+
+
+
+
+### Use the `wizardry`
+
+The `wizardry` script automates the entire process of running the sample code for you. To use it, simply run:
+**Ubuntu**
+```bash
+./wizardry.sh
+```
+**macOS**
+```bash
+./wizardryForMac.sh
+```
+
+
+
 
 ## IoT Device Execution (To execute on ESP32 Microcontroller)
 ### Prerequisites
