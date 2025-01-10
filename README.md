@@ -108,7 +108,7 @@ For example, you might need to add the following line to your `.zshrc` or `.bash
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
 source ~/.zshrc
 ```
-3. **Verify the Installation**: Once the installation is complete, you can verify that Homebrew is installed by running:
+1-3. **Verify the Installation**: Once the installation is complete, you can verify that Homebrew is installed by running:
 ```bash
 brew --version
 ```
