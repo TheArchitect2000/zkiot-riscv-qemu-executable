@@ -54,7 +54,7 @@ This project provides a framework for compiling, executing, and committing C++ u
 ### Prerequisites
 ***1. GCC Compiler:*** For compiling C++ code.
 
-#### Ubuntu:
+### Ubuntu:
 To install the RISC-V GNU Compiler and Toolchain follow the instructions from https://github.com/riscv-collab/riscv-gnu-toolchain or use the instructions below
 ```
 sudo apt update
