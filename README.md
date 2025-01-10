@@ -18,12 +18,12 @@
 This guide will help you execute your C++ program on your computer or IoT device and commit the results to the blockchain.
 
 This project provides a framework for compiling, executing, and committing C++ user programs. The framework supports both local (computer) and IoT device execution. After executing the program, the final commitment is uploaded to the blockchain to ensure traceability and security. You can execute your program in two ways:<br>
-<b>1- Locally on your computer</b><br>
-<b>2- On an IoT device (e.g., ESP32)</b><br>
+<b>1- Computer Execution</b><br>
+<b>2- IoT Device Execution (e.g., ESP32)</b><br>
 
 ## Table of Contents
 
-Platform 1. [Local Execution (To execute on Local Computer using RISC-V Emulator)](#local-execution-to-execute-on-local-computer-using-risc-v-emulator)  
+Platform 1. [Computer Execution (To execute on a Computer using RISC-V Emulator)](#local-execution-to-execute-on-local-computer-using-risc-v-emulator)  
    - [Prerequisites](#prerequisites)
    - [Clone the Repository](#clone-the-repository)
    - [Use the `wizardry`](use-the-wizardry)
@@ -45,9 +45,9 @@ Platform 2. [IoT Device Execution (To execute on ESP32 Microcontroller)](#iot-de
    - [Step 6: Compile and Execute](#step-6-compile-and-execute-1)  
 
 
-#Platform 1. Local Execution (To execute on Local Computer using RISC-V Emulator)
-### Step 1. Prerequisites
-***1.1 GCC Compiler:*** For compiling C++ code.
+# Platform 1. Computer Execution (To execute on Local Computer using RISC-V Emulator)
+## Step 1. Prerequisites
+### 1.1. GCC Compiler:*** For compiling C++ code.
 
 #### 1.1.A. Ubuntu:
 To install the RISC-V GNU Compiler and Toolchain follow the instructions from https://github.com/riscv-collab/riscv-gnu-toolchain or use the instructions below
@@ -91,11 +91,11 @@ To install Homebrew on macOS, follow these steps:
 ### 1.2. Install Homebrew
 Homebrew is a package manager for macOS that simplifies the installation of software.
 
-1.2.1. **Run the Installation Command**:
+#### 1.2.1. **Run the Installation Command**:
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-1.2.2. **Additional Configuration**:
+#### 1.2.2. **Additional Configuration**:
 After installing Homebrew, you might need to add it to your shell profile. The installation script will provide instructions if this is necessary.
 
 For example, you might need to add the following line to your `.zshrc` or `.bash_profile`:
@@ -103,29 +103,29 @@ For example, you might need to add the following line to your `.zshrc` or `.bash
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
 source ~/.zshrc
 ```
-1.2.3. **Verify the Installation**: Once the installation is complete, you can verify that Homebrew is installed by running:
+#### 1.2.3. **Verify the Installation**: Once the installation is complete, you can verify that Homebrew is installed by running:
 ```bash
 brew --version
 ```
 This command should display the version of Homebrew installed on your system.
 
 ### 1.3. Install RISC-V Toolchain
-1.3.1. **Get this tap**:
+#### 1.3.1. **Get this tap**:
 ```bash
 brew tap riscv-software-src/riscv
 ```
-1.3.2. **Build the toolchain**:
+#### 1.3.2. **Build the toolchain**:
 ```bash
 brew install riscv-tools
 ```
-1.3.3. **Verify the Installation**:
+#### 1.3.3. **Verify the Installation**:
 You can verify your install was successful by:
 ```bash
 brew test riscv-tools
 ```
-#### 1.4. Install Spike RISC-V Simulator
+### 1.4. Install Spike RISC-V Simulator
 Spike is an emulator for RISC-V that can run RISC-V binaries:
-1.4.1. **Install Spike**:
+#### 1.4.1. **Install Spike**:
 ```
 git clone https://github.com/riscv/riscv-isa-sim.git
 cd riscv-isa-sim
@@ -136,35 +136,33 @@ make
 sudo make install
 ```
 
-
-
-### Clone the Repository
+### 1.5. Clone the zkIoT Repository
 Clone the repository to your server or local machine.
 ```
 git clone https://github.com/FidesInnova/zkiot.git
 cd zkiot  
 ```
 
-
-### Step 1. Writing a C++ program
+## Step 2. Commitment Generation
+### 2.1. Writing a C++ program
 Write a C++ program for the GCC Compiler and save it as `program.cpp` in the `zkiot` project folder.
 **A sample program is provided in the repository for testing purposes.**
 
 - Refer to the `RV32IM_ISA.md` file in the repository to view the list of currently implemented and available instructions for use.
 
-### Step 2. Compile and Generate an assembly file
+### 2.2. Compile and Generate an assembly file
 Compile the `program.cpp`
-For RISC-V32:
- ```
- riscv64-unknown-elf-g++ -S program.cpp -o program.s -march=rv32gc -mabi=ilp32 -lstdc++
- ```
 For RISC-V64:
  ```
  riscv64-unknown-elf-g++ -S program.cpp -o program.s -lstdc++
  ```
+For RISC-V32:
+ ```
+ riscv64-unknown-elf-g++ -S program.cpp -o program.s -march=rv32gc -mabi=ilp32 -lstdc++
+ ```
 
-### Step 3. Edit `device_config.json`
-#### Use the `device_config.json` from this repository and edit the parameters as needed:
+### 2.3. Edit `device_config.json`
+**Use the `device_config.json` from this repository and edit the parameters as needed:**
 ```
 {
   "class": 32-bit Integer,
@@ -191,8 +189,8 @@ The `class.json` file contains critical information, including:
 
 Ensure you have the correct `setupN.json` file for your class to proceed with the ZKP setup. -->
 
-### Step 4. Execute `commitmentGenerator` 
-#### Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `data/setupN.json`:
+### 2.4. Check the Commitment folder structure
+Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `data/setupN.json`:
 Ensure your directory structure looks like this:
 ```
 zkiot/|
@@ -208,18 +206,17 @@ zkiot/|
       ├── program.s
       └── ... (other project files)
 ```
-
-Now, run the `commitmentGenerator`:
-**Ubuntu**
+### 2.5. Execute `commitmentGenerator` 
+### 2.5.A Ubuntu
 ```
 ./commitmentGenerator
 ```
-**macOS**
+### 2.5.A macOS
 ```
 ./commitmentGeneratorForMac
 ```
 The `commitmentGenerator` will create the following files:
-- `data/program_commitment.json`: The commitment file to be uploaded to the blockchain using the **IoT Developer Console**.
+- `data/program_commitment.json`: The commitment file
 - `data/program_param.json`: An additional parameters file that accelerates the proof generation process.
 - `program_new.s`: A newly generated assembly file with added macros.
 
@@ -242,8 +239,14 @@ The `commitmentGenerator` will create the following files:
   ...
 ``` -->
 
-### Step 5. Compile the `program_new.s`
-#### Assemble and link the new code:
+### 2.6. Upload the Commitment files on blockchain 
+Using Fidesinnova's node web app (e.g., panel.zksensor.tech) upload the generated commitment file. 
+### 2.6.1. Goto the **IoT Developer Console**.
+### 2.6.2. Click on **Submit Commitment**.
+
+## Step 3. ZK Proof Generation
+### 3.1. Compile the `program_new.s`
+Assemble and link the new code.
 For RISC-V32:
 ```
 riscv32-unknown-elf-g++ -march=rv32im -mabi=ilp32 program_new.s lib/polynomial.cpp -o program -lstdc++
@@ -253,8 +256,8 @@ For RISC-V64:
 riscv64-unknown-elf-g++ program_new.s lib/polynomial.cpp -o program -lstdc++
 ```
 
-### Step 6. Run the executable:
-#### Ubuntu
+### 3.2. Run the executable:
+#### 3.2.A. Ubuntu
 For RISC-V32:
 ```
 qemu-riscv32-static program
@@ -266,49 +269,49 @@ qemu-riscv64-static program
 After running the code in QEMU, you will be prompted to enter the contents of `data/program_commitment.json`, `data/program_param.json`, `class.json`, and `data/setupN.json`. You need to input them one by one, ensuring that each file's contents are ended with a blank line.
 
 Once the proof generation is complete, QEMU will print the proof as a JSON in the terminal. Copy this output into the `data/proof.json` file.
-#### macOS
+####  3.2.B. macOS
 ```
 spike pk program
 ```
+### 3.2. Upload the ZK Proof files on blockchain 
+Using Fidesinnova's node web app (e.g., panel.zksensor.tech) upload the generated ZK proof file. 
+### 3.2.1. Goto the **IoT Developer Console**.
+### 3.2.2. Click on **Submit Proof**.
 
-
-### Step 7. Verification
+## Step 4. Proof Verification
 To verify the proof, simply run:
-**Ubuntu**
+### 4.A. Ubuntu
 ```
 ./verifier
 ```
-**macOS**
+### 4.B. macOS
 ```
 ./verifierForMac
 ```
-Alternatively, you can upload your proof using the **IoT Developer Console** to the blockchain and use the Fidesinnova explorer to check the verification.
+### 4.B. Web ZKP Explorer
+```
+Goto https://explorer.fidesinnova.io, search the submitted proof, from the menu choose "Verify Proof". 
+```
 
-
-
-
-### Use the `wizardry`
-
+## Step 4. Use the `wizardry` Script
 The `wizardry` script automates the entire process of running the sample code for you. To use it, simply run:
-**Ubuntu**
+### 4.A. Ubuntu
 ```bash
 ./wizardry.sh
 ```
-**macOS**
+### 4.B. macOS
 ```bash
 ./wizardryForMac.sh
 ```
 
 
-
-
-## IoT Device Execution (To execute on ESP32 Microcontroller)
-### Prerequisites
+# Platform 2. IoT Device Execution (To execute on ESP32 Microcontroller)
+## Step 1. Prerequisites
 ***Arduino Toolchain:*** For compiling C++ code.
 Follow the instructions from https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html to install the Arduino ESP32 toolchain.
 
 
-### Step 1. Writing a C++ program
+## Step 2. Writing a C++ program
 Write a C++ Program for GCC Compiler and Save it as program.cpp 
 ```
 // Example program.cpp for GCC
@@ -334,14 +337,14 @@ void loop() {
 }
 ```
 
-### Step 2. Compile and Generate an assembly file
+## Step 3. Compile and Generate an assembly file
 Compile the `program.ino`
 ***For ESP32-C3, compile `program.ino` using Arduino GUI to generate 'program.ino.elf'.***
 ***Then, Run the following command to generate the 'program.s' assembly file.***
  ```
  riscv32-esp-elf-objdump.exe -d program.ino.elf > program.s
  ```
-### Step 3. Download and Edit `device_config.json` 
+## Step 4. Download and Edit `device_config.json` 
 #### A. Download device_config.json from this repository and edit the parameters.
 ```
 {
@@ -355,12 +358,12 @@ Compile the `program.ino`
 ```
 #### B. Save device_config.json on your computer
 
-### Step 4. Download the `setupN.json` file
+## Step 5. Download the `setupN.json` file
 Download the `setupN.json` file from this repository and save it in the same directory as `device_config.json`. Ensure that in `setupN.json`, the `X` matches your class number.
 
-### Step 5. Download and Execute `commitmentGenerator` 
-#### A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.
-#### B. Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `setupN.json`:
+## Step 6. Download and Execute `commitmentGenerator` 
+**A. Download the `commitmentGenerator` tool from this repository and save it in the same folder with device_config.json.**
+**B. Open a terminal and navigate to the directory containing your `program.s`,** `commitmentGenerator`, `class.json`, `device_config.json`, and `setupN.json`:
 ```
 ./commitmentGenerator
 ```
@@ -397,7 +400,7 @@ This command will prompt you to enter the path and filenames for `program.s`, `c
   ...
 ```
 
-### Step 6. Compile and Execute
+## Step 7. Compile and Execute
 #### A. Assemble and link the new code:
 ```
 riscv32-esp-elf-as -o program_new.o program_new.s
