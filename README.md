@@ -57,7 +57,7 @@ git clone https://github.com/riscv/riscv-gnu-toolchain
 ```
 This repository uses submodules, but submodules will fetch automatically on demand, so `--recursive` or `git submodule update --init --recursive` is not needed.
 
-**Warning: git clone takes around 6.65 GB of disk and download size**
+Warning: git clone takes around 6.65 GB of disk and download size.
 
 Several standard packages are needed to build the toolchain.
 
