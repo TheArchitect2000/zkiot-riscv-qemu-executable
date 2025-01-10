@@ -93,14 +93,14 @@ apt-get install qemu-user-static
 ### macOS:
 To install Homebrew on macOS, follow these steps:
 
-#### Install Homebrew
+#### 1. Install Homebrew
 Homebrew is a package manager for macOS that simplifies the installation of software.
 
-1. **Run the Installation Command**:
+1-1. **Run the Installation Command**:
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-2. **Additional Configuration**:
+1-2. **Additional Configuration**:
 After installing Homebrew, you might need to add it to your shell profile. The installation script will provide instructions if this is necessary.
 
 For example, you might need to add the following line to your `.zshrc` or `.bash_profile`:
@@ -114,23 +114,23 @@ brew --version
 ```
 This command should display the version of Homebrew installed on your system.
 
-#### Install RISC-V Toolchain
-1. **Get this tap**:
+#### 2. Install RISC-V Toolchain
+2-1. **Get this tap**:
 ```bash
 brew tap riscv-software-src/riscv
 ```
-2. **Build the toolchain**:
+2-1. **Build the toolchain**:
 ```bash
 brew install riscv-tools
 ```
-2. **Verify the Installation**:
+2-2. **Verify the Installation**:
 You can verify your install was successful by:
 ```bash
 brew test riscv-tools
 ```
-#### Install Spike RISC-V Simulator
+#### 3. Install Spike RISC-V Simulator
 Spike is an emulator for RISC-V that can run RISC-V binaries:
-1. **Install Spike**:
+3-1. **Install Spike**:
 ```
 git clone https://github.com/riscv/riscv-isa-sim.git
 cd riscv-isa-sim
