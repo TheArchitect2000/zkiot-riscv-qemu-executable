@@ -90,8 +90,58 @@ source ~/.bashrc
 ```
 apt-get install qemu-user-static
 ```
-#### macOS:
-To install the RISC-V GNU Compiler and Toolchain follow the instructions from https://github.com/riscv-collab/riscv-gnu-toolchain
+### macOS:
+To install Homebrew on macOS, follow these steps:
+
+#### Install Homebrew
+Homebrew is a package manager for macOS that simplifies the installation of software.
+
+1. **Run the Installation Command**:
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+2. **Additional Configuration**:
+After installing Homebrew, you might need to add it to your shell profile. The installation script will provide instructions if this is necessary.
+
+For example, you might need to add the following line to your `.zshrc` or `.bash_profile`:
+```bash
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
+source ~/.zshrc
+```
+3. **Verify the Installation**: Once the installation is complete, you can verify that Homebrew is installed by running:
+```bash
+brew --version
+```
+This command should display the version of Homebrew installed on your system.
+
+#### Install RISC-V Toolchain
+1. **Get this tap**:
+```bash
+brew tap riscv-software-src/riscv
+```
+2. **Build the toolchain**:
+```bash
+brew install riscv-tools
+```
+2. **Verify the Installation**:
+You can verify your install was successful by:
+```bash
+brew test riscv-tools
+```
+#### Install Spike RISC-V Simulator
+Spike is an emulator for RISC-V that can run RISC-V binaries:
+1. **Install Spike**:
+```
+git clone https://github.com/riscv/riscv-isa-sim.git
+cd riscv-isa-sim
+mkdir build
+cd build
+../configure --prefix=/usr/local
+make
+sudo make install
+```
+
+
 
 ### Clone the Repository
 Clone the repository to your server or local machine.
@@ -112,26 +162,6 @@ The `wizardry.sh` script automates the entire process of running the sample code
 Write a C++ program for the GCC Compiler and save it as `program.cpp` in the `zkiot` project folder.
 **A sample program is provided in the repository for testing purposes.**
 
-```
-// Example program.cpp for GCC
-#include "lib/fidesinnova.h"
-
-int main() {
-    int result;
-
-    asm volatile (
-        "li s1, 1\n"
-        "li s2, 1\n"
-        "mul s2, s2, s1\n"
-        "addi s2, s2, 1\n"
-        "mul s2, s2, s1\n"
-        ...
-        ...
-    );
-    return 0;
-}
-```
-The above example demonstrates how to use inline assembly with RISC-V instructions in a C++ program. Modify it to test other instructions.
 - Refer to the `RV32IM_ISA.md` file in the repository to view the list of currently implemented and available instructions for use.
 
 ### Step 2. Compile and Generate an assembly file
@@ -160,7 +190,7 @@ For RISC-V64:
 - **class**: A 32-bit integer indicating the number of gates in your ZKP. For more details, refer to the [Fidesinnova Documentation](https://fidesinnova-1.gitbook.io/fidesinnova-docs/zero-knowledge-proof-zkp-scheme/1-setup-phase).
 - **code_block**: A two-part 64-bit array specifying the starting and ending line numbers of the section in `program.s` for which you want to create a ZKP.
 
-
+<!-- 
 ### Step 4. The Necessary Files
 Inside the `data` folder, you will find the `setupN.json` files, where `N` corresponds to your class number. 
 The `class.json` file contains critical information, including:
@@ -171,9 +201,9 @@ The `class.json` file contains critical information, including:
 - **field size (p)**: The size of the finite field used in the ZKP.
 - **generator (g)**: The generator of the field.
 
-Ensure you have the correct `setupN.json` file for your class to proceed with the ZKP setup.
+Ensure you have the correct `setupN.json` file for your class to proceed with the ZKP setup. -->
 
-### Step 5. Execute `commitmentGenerator` 
+### Step 4. Execute `commitmentGenerator` 
 #### Open a terminal and navigate to the directory containing your `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `data/setupN.json`:
 Ensure your directory structure looks like this:
 ```
@@ -200,7 +230,7 @@ The `commitmentGenerator` will create the following files:
 - `data/program_param.json`: An additional parameters file that accelerates the proof generation process.
 - `program_new.s`: A newly generated assembly file with added macros.
 
-The `program_new.s` will look something like this:
+<!-- The `program_new.s` will look something like this:
 ```
 // program_new.s
   ....
@@ -217,10 +247,10 @@ The `program_new.s` will look something like this:
   ...
   call proofGenerator
   ...
-```
+``` -->
 
-### Step 6. Compile and Execute
-#### A. Assemble and link the new code:
+### Step 5. Compile the `program_new.s`
+#### Assemble and link the new code:
 For RISC-V32:
 ```
 riscv32-unknown-elf-g++ -march=rv32im -mabi=ilp32 program_new.s lib/polynomial.cpp -o program -lstdc++
@@ -230,7 +260,8 @@ For RISC-V64:
 riscv64-unknown-elf-g++ program_new.s lib/polynomial.cpp -o program -lstdc++
 ```
 
-#### B. Run the executable:
+### Step 6. Run the executable:
+#### Ubuntu
 For RISC-V32:
 ```
 qemu-riscv32-static program
@@ -239,6 +270,12 @@ For RISC-V64:
 ```
 qemu-riscv64-static program
 ```
+
+#### macOS
+```
+spike pk program
+```
+
 After running the code in QEMU, you will be prompted to enter the contents of `data/program_commitment.json`, `data/program_param.json`, `class.json`, and `data/setupN.json`. You need to input them one by one, ensuring that each file's contents are ended with a blank line.
 
 Once the proof generation is complete, QEMU will print the proof as a JSON in the terminal. Copy this output into the `data/proof.json` file.
