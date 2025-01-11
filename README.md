@@ -12,10 +12,10 @@
 <a href="https://discord.com/invite/NQdM6JGwcs" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
 <a href="https://twitter.com/FidesInnova" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 
-This guide will help you to learn how to:
-- Step A) Create a commitment for a computation (e.g. C++ program, IoT Firmware, Machine Learning models) and submit it on blockchain.
-- Step B) Execute the computation and create a ZK proof to demonstrate the corrctness of the execution and submit it on blockchain.
-- Step C) Verify the ZK proof via blockchain explorer or using a verifier program.
+This guide will teach you how to:
+- Step A: Create a commitment for a computation (e.g., C++ programs, IoT firmware, or machine learning models) and submit it to the blockchain.
+- Step B: Execute the computation, generate a ZK proof to demonstrate the correctness of the execution, and submit it to the blockchain.
+- Step C: Verify the ZK proof using a blockchain explorer or a verifier program.
 
 These steps are outlined for three different scenarios in the following README files:
 - [Execute a program on a computer](https://github.com/FidesInnova/zkiot/blob/main/README_Program.md)
