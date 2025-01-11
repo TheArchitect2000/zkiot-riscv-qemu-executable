@@ -17,15 +17,24 @@ This guide will teach you how to:
 - **Step B:** Execute the computation, generate a ZK proof to demonstrate the correctness of the execution, and submit it to the blockchain.
 - **Step C:** Verify the ZK proof using a blockchain explorer or a verifier program.
 
-ReadMe 2. [IoT Device Execution (To execute on ESP32 Microcontroller)](#iot-device-execution-to-execute-on-esp32-microcontroller)  
-   - [Prerequisites](#prerequisites-1)  
-   - [Step 1: Writing a C++ Program](#step-1-writing-a-c-program-1)  
-   - [Step 2: Compile and Generate an Assembly File](#step-2-compile-and-generate-an-assembly-file-1)  
-   - [Step 3: Download and Edit `device_config.json`](#step-3-download-and-edit-device_configjson-1)  
-   - [Step 4: Download the `setupN.json` File](#step-4-download-the-setupNjson-file-1)  
-   - [Step 5: Download and Execute `commitmentGenerator`](#step-5-download-and-execute-commitmentgenerator-1)  
-   - [Step 6: Compile and Execute](#step-6-compile-and-execute-1)
-     
+# Table of Contents
+- [zk-IoT: Enabling Verifiable Computing for IoT Devices](#zk-iot-enabling-verifiable-computing-for-iot-devices)
+- [Step A. IoT Device Execution (To execute on ESP32-C3 microcontroller)](#step-a-iot-device-execution-to-execute-on-esp32-c3-microcontroller)
+  - [A.1. Clone the zkIoT repository](#a1-clone-the-zkiot-repository)
+  - [A.2. Writing an Arduino program](#a2-writing-an-arduino-program)
+  - [A.3. Compile and generate an assembly file](#a3-compile-and-generate-an-assembly-file)
+  - [A.5. Edit `device_config.json` in the zkiot folder](#a5-edit-device_configjson-in-the-zkiot-folder)
+  - [A.6. Check the Commitment folder structure](#a6-check-the-commitment-folder-structure)
+  - [A.7. Execute `commitmentGenerator`](#a7-execute-commitmentgenerator)
+  - [A.8. Submit the commitment on blockchain](#a8-submit-the-commitment-on-blockchain)
+- [Step B. Proof Generation](#step-b-proof-generation)
+  - [B.1. Assemble and link the program_new, generating the ELF file](#b1-assemble-and-link-the-program_new-generating-the-elf-file)
+  - [B.2. Convert the program to a binary format suitable for your IoT device](#b2-convert-the-program-to-a-binary-format-suitable-for-your-iot-device)
+  - [B.3. Upload `program_new.bin` on your IoT device and execute it](#b3-upload-program_newbin-on-your-iot-device-and-execute-it)
+- [Step C. Proof Verification](#step-c-proof-verification)
+  - [C.1. Web ZKP Explorer](#c1-web-zkp-explorer)
+
+
 # Step A. IoT Device Execution (To execute on ESP32-C3 microcontroller)
 ## Install Arduino Toolchain to compile C++ programs
 Follow the instructions from https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html to install the Arduino ESP32 toolchain.
