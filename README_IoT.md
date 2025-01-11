@@ -13,7 +13,7 @@
 <a href="https://twitter.com/FidesInnova" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 
 This guide will teach you how to:
-- **Step A:** Create a commitment for a computation for an IoT firmware and submit it to the blockchain.
+- **Step A:** Create a commitment for computation from an IoT firmware and submit it to the blockchain.
 - **Step B:** Execute the computation, generate a ZK proof to demonstrate the correctness of the execution, and submit it to the blockchain.
 - **Step C:** Verify the ZK proof using a blockchain explorer or a verifier program.
 
