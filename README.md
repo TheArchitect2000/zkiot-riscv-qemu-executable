@@ -341,7 +341,7 @@ Make sure your IoT device sends the generated proof to the IoT server node in or
 ## C.1. Web ZKP Explorer
 ```
 Goto https://explorer.fidesinnova.io, search the submitted proof, from the menu choose "Verify Proof". 
-
+```
 
 ReadMe 3. [Machine Learning Model](#iot-device-execution-to-execute-on-esp32-microcontroller)  
    - [Prerequisites](#prerequisites-1)  
