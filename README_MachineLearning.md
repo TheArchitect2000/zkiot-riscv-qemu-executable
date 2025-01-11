@@ -18,7 +18,6 @@ This guide will teach you how to:
 - **Step C:** Verify the ZK proof using a blockchain explorer or a verifier program.
 
 # Table of Contents
-- [zk-IoT: Enabling Verifiable Computing for Machine Learning Models](#zk-iot-enabling-verifiable-computing-for-machine-learning-models)
 - [Converting Python Code to C and Compiling for RISC-V Architecture](#converting-python-code-to-c-and-compiling-for-risc-v-architecture)
   - [1. Generating C Code with Cython](#1-generating-c-code-with-cython)
     - [1.1 Create a .pyx file](#11-create-a-pyx-file)
