@@ -2,7 +2,7 @@
   <a href="https://fidesinnova.io/" target="blank"><img src="https://fidesinnova.io/Download/logo/g-c-web-back.png" /></a>
 </p>
 
-# zk-IoT: C++ Program Execution with Verifiable Computing Feature on IoT devices and Computers
+# zk-IoT: Enabling Verifiable Computing for C++ Programs
 
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
@@ -12,15 +12,10 @@
 <a href="https://discord.com/invite/NQdM6JGwcs" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
 <a href="https://twitter.com/FidesInnova" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 
-This guide will help you to learn how to:
-- Step A) create a commitment for your C++ program and submit it on blockchain, 
-- Step B) execute your program and create a proof for your execution on your comuter or IoT device and submit it on blockchain, 
-- Step C) verify the proof on blockchain via blockchain explorer or through a verifier program.
-
-  These steps are explained for three different scenarios to:
-  - 1- Execute a program on a computer
-  - 2- Execute a firmware on an IoT device
-  - 3- Execute a machine learning model 
+This guide will teach you how to:
+- **Step A:** Create a commitment for computation from a C++ program and submit it to the blockchain.
+- **Step B:** Execute the computation, generate a ZK proof to demonstrate the correctness of the execution, and submit it to the blockchain.
+- **Step C:** Verify the ZK proof using a blockchain explorer or a verifier program.
 
 ReadMe 1. [Computer Execution (To execute on a Computer using RISC-V Emulator)](#local-execution-to-execute-on-local-computer-using-risc-v-emulator)  
    - [Prerequisites](#prerequisites)
