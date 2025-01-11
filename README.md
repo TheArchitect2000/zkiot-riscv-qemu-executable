@@ -18,9 +18,9 @@ This guide will help you to learn how to:
 - Step C) verify the proof on blockchain via blockchain explorer or through a verifier program.
 
   These steps are explained for three different scenarios to:
-  1- Execute a program on a computer
-  2- Execute a firmware on an IoT device
-  3- Execute a machine learning model 
+  - 1- Execute a program on a computer
+  - 2- Execute a firmware on an IoT device
+  - 3- Execute a machine learning model 
 
 ReadMe 1. [Computer Execution (To execute on a Computer using RISC-V Emulator)](#local-execution-to-execute-on-local-computer-using-risc-v-emulator)  
    - [Prerequisites](#prerequisites)
