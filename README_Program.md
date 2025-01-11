@@ -228,7 +228,24 @@ spike pk program
 ## B.3. Submit the generated proof on blockchain 
 Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generated ZK proof file. 
 ### B.3.1. Goto the **IoT Developer Console**.
-### B.3.2. Click on **Submit Proof**.
+<p align="center">
+  <img src="docs/images/1.png" />
+</p>
+
+### B.3.2. Click on **ZKP Proof Publisher**.
+<p align="center">
+  <img src="docs/images/6.png" />
+</p>
+
+### B.3.3. Select the **IoT Device Type**.
+<p align="center">
+  <img src="docs/images/7.png" />
+</p>
+
+### B.3.4. Click on **Publish**.
+<p align="center">
+  <img src="docs/images/8.png" />
+</p>
 
 # Step C. Proof Verification
 ## C.1. Verifier program
@@ -242,4 +259,14 @@ Simply run the verifier program.
 ./verifierForMac
 ```
 ### C.2. Web ZKP Explorer
-Goto https://explorer.fidesinnova.io, search the submitted proof, from the menu choose "Verify Proof". 
+Goto https://explorer.fidesinnova.io, search the submitted proof, from the menu choose "Verify Proof".
+
+### C.2.1. Goto https://explorer.fidesinnova.io**.
+<p align="center">
+  <img src="docs/images/9.png" />
+</p>
+
+### C.2.2. On the explorer page, locate a transaction of type ZKP Stored, click on the three dots, and select "Verify Proof" from the menu.
+<p align="center">
+  <img src="docs/images/10.png" />
+</p>
