@@ -17,14 +17,23 @@ This guide will teach you how to:
 - **Step B:** Execute the computation, generate a ZK proof to demonstrate the correctness of the execution, and submit it to the blockchain.
 - **Step C:** Verify the ZK proof using a blockchain explorer or a verifier program.
 
-ReadMe 3. [Machine Learning Model](#iot-device-execution-to-execute-on-esp32-microcontroller)  
-   - [Prerequisites](#prerequisites-1)  
-   - [Step 1: Writing a C++ Program](#step-1-writing-a-c-program-1)  
-   - [Step 2: Compile and Generate an Assembly File](#step-2-compile-and-generate-an-assembly-file-1)  
-   - [Step 3: Download and Edit `device_config.json`](#step-3-download-and-edit-device_configjson-1)  
-   - [Step 4: Download the `setupN.json` File](#step-4-download-the-setupNjson-file-1)  
-   - [Step 5: Download and Execute `commitmentGenerator`](#step-5-download-and-execute-commitmentgenerator-1)  
-   - [Step 6: Compile and Execute](#step-6-compile-and-execute-1)
+# Table of Contents
+- [zk-IoT: Enabling Verifiable Computing for Machine Learning Models](#zk-iot-enabling-verifiable-computing-for-machine-learning-models)
+- [Converting Python Code to C and Compiling for RISC-V Architecture](#converting-python-code-to-c-and-compiling-for-risc-v-architecture)
+  - [1. Generating C Code with Cython](#1-generating-c-code-with-cython)
+    - [1.1 Create a .pyx file](#11-create-a-pyx-file)
+    - [1.2 Create a setup.py file](#12-create-a-setuppy-file)
+    - [1.3 Compile with Cython](#13-compile-with-cython)
+  - [2. Setting Up for RISC-V Architecture](#2-setting-up-for-risc-v-architecture)
+    - [2.1 Dependencies](#21-dependencies)
+    - [2.2 Compile the C Code](#22-compile-the-c-code)
+  - [3. Generating an Executable (Optional)](#3-generating-an-executable-optional)
+  - [4. Simulating or Running on RISC-V](#4-simulating-or-running-on-risc-v)
+    - [4.1 Install QEMU](#41-install-qemu)
+    - [4.2 Run the File in QEMU](#42-run-the-file-in-qemu)
+  - [Important Notes](#important-notes)
+
+
 # Converting Python Code to C and Compiling for RISC-V Architecture
 This guide explains how to convert Python code to C and then compile it for the RISC-V architecture.
 
