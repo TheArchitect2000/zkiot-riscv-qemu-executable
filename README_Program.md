@@ -17,17 +17,35 @@ This guide will teach you how to:
 - **Step B:** Execute the computation, generate a ZK proof to demonstrate the correctness of the execution, and submit it to the blockchain.
 - **Step C:** Verify the ZK proof using a blockchain explorer or a verifier program.
 
-ReadMe 1. [Computer Execution (To execute on a Computer using RISC-V Emulator)](#local-execution-to-execute-on-local-computer-using-risc-v-emulator)  
-   - [Prerequisites](#prerequisites)
-   - [Clone the Repository](#clone-the-repository)
-   - [Use the `wizardry`](use-the-wizardry)
-   - [Step 1: Writing a C++ program](#step-1-writing-a-c-program)  
-   - [Step 2: Compile and Generate an assembly file](#step-2-compile-and-generate-an-assembly-file)  
-   - [Step 3: Edit `device_config.json`](#step-3-edit-device_configjson)  
-   - [Step 4: The Necessary Files](#step-4-the-necessary-files)  
-   - [Step 5: Execute `commitmentGenerator`](#step-5-execute-commitmentgenerator)  
-   - [Step 6: Compile and Execute](#step-6-compile-and-execute)
-   - [Step 7: Verification](#step-7-verification)
+# Table of Contents
+- [zk-IoT: Enabling Verifiable Computing for C++ Programs](#zk-iot-enabling-verifiable-computing-for-c-programs)
+- [Step A. Commitment Generation](#step-a-commitment-generation)
+  - [A.1. Install GCC compiler and emulator to compile and execute C++ programs](#a1-install-gcc-compiler-and-emulator-to-compile-and-execute-c-programs)
+    - [A.1.1. Ubuntu](#a11-ubuntu)
+    - [A.1.2. macOS](#a12-macos)
+  - [A.2. Clone the zkIoT repository](#a2-clone-the-zkiot-repository)
+  - [A.3. Writing a C++ program](#a3-writing-a-c-program)
+  - [A.4. Compile the C++ program](#a4-compile-the-c-program)
+  - [A.5. Edit `device_config.json` in the zkiot folder](#a5-edit-device_configjson-in-the-zkiot-folder)
+  - [A.6. Check the Commitment folder structure](#a6-check-the-commitment-folder-structure)
+  - [A.7. Execute `commitmentGenerator`](#a7-execute-commitmentgenerator)
+    - [A.7.1 Ubuntu](#a71-ubuntu)
+    - [A.7.2 macOS](#a72-macos)
+  - [A.8. Submit the commitment on blockchain](#a8-submit-the-commitment-on-blockchain)
+- [Step B. Proof Generation](#step-b-proof-generation)
+  - [B.1. Compile the `program_new.s`](#b1-compile-the-programnews)
+  - [B.2. Run the executable](#b2-run-the-executable)
+    - [B.2.1. Ubuntu](#b21-ubuntu)
+    - [B.2.2. macOS](#b22-macos)
+  - [B.3. Submit the generated proof on blockchain](#b3-submit-the-generated-proof-on-blockchain)
+- [Step C. Proof Verification](#step-c-proof-verification)
+  - [C.1. Verifier program](#c1-verifier-program)
+    - [C.1.1. Ubuntu](#c11-ubuntu)
+    - [C.1.2. macOS](#c12-macos)
+  - [C.2. Web ZKP Explorer](#c2-web-zkp-explorer)
+
+
+
 
 # Step A. Commitment Generation
 ## A.1. Install GCC compiler and emualtor to compile and execute C++ programms
