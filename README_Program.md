@@ -225,7 +225,8 @@ qemu-riscv64-static program
 spike pk program
 ```
 ## B.3. Submit the generated proof on blockchain 
-Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generated ZK proof file. 
+Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generated ZK proof file.
+
 ### B.3.1. Goto the **IoT Developer Console**.
 <p align="center">
   <img src="docs/images/1.png" />
