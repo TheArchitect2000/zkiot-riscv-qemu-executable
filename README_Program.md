@@ -168,11 +168,11 @@ zkiot/|
       └── ... (other project files)
 ```
 ## A.7. Execute `commitmentGenerator` 
-### A.7.1 Ubuntu
+### A.7.1. Ubuntu
 ```
 ./commitmentGenerator
 ```
-### A.7.2 macOS
+### A.7.2. macOS
 ```
 ./commitmentGeneratorForMac
 ```
@@ -189,17 +189,17 @@ Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generate
   <img src="docs/images/1.png" />
 </p>
 
-### A.8.2 Click on **ZKP Commitment Publisher**.
+### A.8.2. Click on **ZKP Commitment Publisher**.
 <p align="center">
   <img src="docs/images/2.png" />
 </p>
 
-### A.8.3 Click on **Upload**.
+### A.8.3. Click on **Upload**.
 <p align="center">
   <img src="docs/images/3.png" />
 </p>
 
-### A.8.4 Click on **Publish**.
+### A.8.4. Click on **Publish**.
 <p align="center">
   <img src="docs/images/4.png" />
 </p>
