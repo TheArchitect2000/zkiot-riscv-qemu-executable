@@ -243,7 +243,7 @@ Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generate
 
 ### B.3.4. Click on **Publish**.
 <p align="center">
-  <img src="docs/images/8.png" />
+  <img src="docs/images/8n1.png" />
 </p>
 
 # Step C. Proof Verification
