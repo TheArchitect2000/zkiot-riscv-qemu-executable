@@ -19,5 +19,5 @@ This guide will teach you how to:
 
 These steps are outlined for three different scenarios in the following README files:
 - [Enabling Verifiable Computing for C++ Programs](https://github.com/FidesInnova/zkiot/blob/main/README_Program.md)
-- [Enabling Verifiable Computing for IoT devices](https://github.com/FidesInnova/zkiot/blob/main/README_IoT.md)
+- [Enabling Verifiable Computing for IoT Devices](https://github.com/FidesInnova/zkiot/blob/main/README_IoT.md)
 - [Enabling Verifiable Computing for Machine Learning Models](https://github.com/FidesInnova/zkiot/blob/main/README_MachineLearning.md)
