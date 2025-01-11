@@ -2,7 +2,7 @@
   <a href="https://fidesinnova.io/" target="blank"><img src="https://fidesinnova.io/Download/logo/g-c-web-back.png" /></a>
 </p>
 
-# zk-IoT: C++ Program Execution with Verifiable Computing Feature on IoT devices and Computers
+# zk-IoT: Enabling Verifiable Computing for C++ Programs, IoT Devices, and Machine Learning Models
 
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
