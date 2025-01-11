@@ -13,11 +13,11 @@
 <a href="https://twitter.com/FidesInnova" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 
 This guide will help you to learn how to:
-- Step A) Create a commitment for your C++ program and submit it on blockchain.
-- Step B) Execute your program and create a proof for your execution on your comuter or IoT device and submit it on blockchain.
-- Step C) Verify the proof on blockchain via blockchain explorer or through a verifier program.
+- Step A) Create a commitment for a computation (e.g. C++ program, IoT Firmware, Machine Learning models) and submit it on blockchain.
+- Step B) Execute the computation and create a ZK proof to demonstrate the corrctness of the execution and submit it on blockchain.
+- Step C) Verify the ZK proof via blockchain explorer or using a verifier program.
 
-  These steps are explained for three different scenarios to:
-  - 1- [Execute a program on a computer](https://github.com/FidesInnova/zkiot/blob/main/README_Program.md)
-  - 2- [Execute a firmware on an IoT device](https://github.com/FidesInnova/zkiot/blob/main/README_IoT.md)
-  - 3- [Execute a machine learning model](https://github.com/FidesInnova/zkiot/blob/main/README_MachineLearning.md)
+These steps are outlined for three different scenarios in the following README files:
+- [Execute a program on a computer](https://github.com/FidesInnova/zkiot/blob/main/README_Program.md)
+- [Execute a firmware on an IoT device](https://github.com/FidesInnova/zkiot/blob/main/README_IoT.md)
+- [Execute a machine learning model](https://github.com/FidesInnova/zkiot/blob/main/README_MachineLearning.md)
