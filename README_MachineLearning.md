@@ -57,13 +57,13 @@ This guide explains how to convert Python code to C and then compile it for the 
 
 ## Step A. Generating C Code with Cython
 ### A.1. Create a .pyx file
-First, rename your Python file to .pyx:
+- First, rename your Python file to .pyx:
 
 ```
 mv test.py test.pyx
 ```
 ### A.2. Create a setup.py file
-Create a new file named setup.py and add the following code:
+- Create a new file named setup.py and add the following code:
 ```
 from distutils.core import setup
 from Cython.Build import cythonize
@@ -73,7 +73,7 @@ setup(
 )
 ```
 ### A.3. Compile with Cython
-Run the following command to generate the C code:
+- Run the following command to generate the C code:
 (pip3 install cython)
 sudo apt-get install libc6-dev-riscv64-cross
 sudo apt-get install libpython3-dev-riscv64-cross
@@ -82,16 +82,16 @@ riscv64-unknown-elf-gcc --print-sysroot
 ```
 python3 setup.py build_ext --inplace
 ```
-After running this command, a C file (e.g., test.c) will be generated.
+- After running this command, a C file (e.g., test.c) will be generated.
 
 ## Step B. Setting Up for RISC-V Architecture
 ### B.1. Dependencies
-To run the generated C code on the RISC-V architecture, you need specific libraries:
-
-libpython: To interface the C code with the Python environment.
-RISC-V compiler such as riscv64-unknown-elf-g++ or riscv32-unknown-elf-gcc.
+- To run the generated C code on the RISC-V architecture, you need specific libraries:
+   libpython: To interface the C code with the Python environment.
+   RISC-V compiler such as riscv64-unknown-elf-g++ or riscv32-unknown-elf-gcc.
+  
 ### B.2. Compile the C Code
-Use the RISC-V compiler to generate assembly code. If your C file is test.c, run:
+- Use the RISC-V compiler to generate assembly code. If your C file is test.c, run:
 
 ```
 riscv64-linux-gnu-gcc -march=rv32gc -mabi=ilp32 -I/usr/include/python3.8  -I/usr/include  -I/usr/riscv64-linux-gnu/include/  -o demo3asembly.s -S demo3.
@@ -102,29 +102,29 @@ riscv64-unknown-elf-gcc -S demo3.c -o demo3asembly.s -march=rv32gc -mabi=ilp32 -
 ```
 riscv64-unknown-elf-gcc -S test.c -o test.s -march=rv32gc -mabi=ilp32
 ```
--S: Generates assembly code.<br>
--o test.s: Outputs the result to test.s.<br>
--march=rv32gc: Specifies the 32-bit RISC-V architecture with support for standard and compressed instructions.<br>
--mabi=ilp32: Uses the 32-bit ABI model.<br>
+- S: Generates assembly code.<br>
+- o test.s: Outputs the result to test.s.<br>
+- march=rv32gc: Specifies the 32-bit RISC-V architecture with support for standard and compressed instructions.<br>
+- mabi=ilp32: Uses the 32-bit ABI model.<br>
 
 ## Step C. Generating an Executable (Optional)
-If you want to generate an executable, use the following command:
+- If you want to generate an executable, use the following command:
 
 ```
 riscv64-unknown-elf-gcc test.c -o test.elf -march=rv32gc -mabi=ilp32 -lpython3.10
 ```
--lpython3.10: Links the Python library (change the version based on your installation).
+- lpython3.10: Links the Python library (change the version based on your installation).
 
 ## Step D. Simulating or Running on RISC-V
-If you don't have access to a real RISC-V processor, you can use a simulator.
+- If you don't have access to a real RISC-V processor, you can use a simulator.
 
 ### D.1. Install QEMU
-First, install QEMU:
+- First, install QEMU:
 ```
 sudo apt install qemu-system-misc
 ```
 ### D.2. Run the File in QEMU
-To run the test.elf file in QEMU, use:
+- To run the test.elf file in QEMU, use:
 ```
 qemu-riscv32 test.elf
 ```
