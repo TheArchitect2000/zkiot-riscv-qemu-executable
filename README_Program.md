@@ -18,7 +18,6 @@ This guide will teach you how to:
 - **Step C:** Verify the ZK proof using a blockchain explorer or a verifier program.
 
 # Table of Contents
-- [zk-IoT: Enabling Verifiable Computing for C++ Programs](#zk-iot-enabling-verifiable-computing-for-c-programs)
 - [Step A. Commitment Generation](#step-a-commitment-generation)
   - [A.1. Install GCC compiler and emulator to compile and execute C++ programs](#a1-install-gcc-compiler-and-emulator-to-compile-and-execute-c-programs)
     - [A.1.1. Ubuntu](#a11-ubuntu)
