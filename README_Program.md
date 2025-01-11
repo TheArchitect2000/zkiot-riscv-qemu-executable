@@ -183,9 +183,30 @@ The `commitmentGenerator` will create the following files:
 - `program_new.s`: A newly generated assembly file with added macros.
 
 ## A.8. Submit the commitment on blockchain 
-Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generated commitment. 
+Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generated commitment.
+
 ### A.8.1. Goto the **IoT Developer Console**.
-### A.8.2 Click on **Submit Commitment**.
+<p align="center">
+  <img src="docs/images/1.png" />
+</p>
+
+### A.8.2 Click on **ZKP Commitment Publisher**.
+<p align="center">
+  <img src="docs/images/2.png" />
+</p>
+
+### A.8.3 Click on **Upload**.
+<p align="center">
+  <img src="docs/images/3.png" />
+</p>
+
+### A.8.4 Click on **Publish**.
+<p align="center">
+  <img src="docs/images/4.png" />
+</p>
+<p align="center">
+  <img src="docs/images/5.png" />
+</p>
 
 # Step B. Proof Generation
 ## B.1. Compile the `program_new.s`
