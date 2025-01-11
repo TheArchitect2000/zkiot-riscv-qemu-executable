@@ -18,6 +18,6 @@ This guide will teach you how to:
 - **Step C:** Verify the ZK proof using a blockchain explorer or a verifier program.
 
 These steps are outlined for three different scenarios in the following README files:
-- [Execute a program on a computer](https://github.com/FidesInnova/zkiot/blob/main/README_Program.md)
-- [Execute a firmware on an IoT device](https://github.com/FidesInnova/zkiot/blob/main/README_IoT.md)
-- [Execute a machine learning model](https://github.com/FidesInnova/zkiot/blob/main/README_MachineLearning.md)
+- [Enabling Verifiable Computing for C++ Programs](https://github.com/FidesInnova/zkiot/blob/main/README_Program.md)
+- [Enabling Verifiable Computing for IoT devices](https://github.com/FidesInnova/zkiot/blob/main/README_IoT.md)
+- [Enabling Verifiable Computing for Machine Learning Models](https://github.com/FidesInnova/zkiot/blob/main/README_MachineLearning.md)
