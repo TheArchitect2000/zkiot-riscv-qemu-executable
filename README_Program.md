@@ -192,7 +192,7 @@ You must first obtain developer permissions to submit commitments and proofs to 
   <img src="docs/images/15.png" />
 </p>
 
-### A.8.2 Connect your wallet to Fidesinnova's node web app.
+### A.8.2. Connect your wallet to Fidesinnova's node web app.
 <p align="center">
   <img src="docs/images/16.png" />
 </p>
@@ -203,20 +203,28 @@ You must first obtain developer permissions to submit commitments and proofs to 
   <img src="docs/images/17m.png" />
 </p>
 <p align="center">
-  <img src="docs/images/18m.png" />
+  <img src="docs/images/18m1.png" />
 </p>
 
-### A.8.3. Goto the **IoT Developer Console**
+### A.8.3. Request tokens from the faucet.
+<p align="center">
+  <img src="docs/images/22.png" />
+</p>
+<p align="center">
+  <img src="docs/images/23.png" />
+</p>
+
+### A.8.4. Go to the **IoT Developer Console**
 <p align="center">
   <img src="docs/images/1.png" />
 </p>
 
-### A.8.4. Click on **ZKP Commitment Publisher**
+### A.8.5. Click on **ZKP Commitment Publisher**
 <p align="center">
   <img src="docs/images/2.png" />
 </p>
 
-### A.8.5. Click on **Upload**
+### A.8.6. Click on **Upload**
 <p align="center">
   <img src="docs/images/3.png" />
 </p>
@@ -227,7 +235,7 @@ You must first obtain developer permissions to submit commitments and proofs to 
   <img src="docs/images/5.png" />
 </p>
 
-### A.8.6. Click on **Publish**
+### A.8.7. Click on **Publish**
 
 <p align="center">
   <img src="docs/images/12.png" />
