@@ -197,6 +197,9 @@ You must first obtain developer permissions to submit commitments and proofs to 
   <img src="docs/images/16.png" />
 </p>
 <p align="center">
+  <img src="docs/images/21.png" />
+</p>
+<p align="center">
   <img src="docs/images/17m.png" />
 </p>
 <p align="center">
