@@ -264,14 +264,16 @@ Simply run the verifier program.
 ./verifierForMac
 ```
 ## C.2. Web ZKP Explorer
-Go to https://explorer.fidesinnova.io, look for the submitted proof, and choose "Verify Proof" from the menu.
+Go to the [Fidesinnova Explorer](https://explorer.fidesinnova.io), look for the submitted proof, and choose "Verify Proof" from the menu.
 
-### C.2.1. Goto https://explorer.fidesinnova.io.
+### C.2.1. Locate the proof
+In the [Fidesinnova Explorer](https://explorer.fidesinnova.io), fide the submitted proof using the Transaction ID.
 <p align="center">
   <img src="docs/images/9.png" />
 </p>
 
-### C.2.2. On the explorer page, locate a transaction of type ZKP Stored, click on the three dots, and select "Verify Proof" from the menu.
+### C.2.2. Verify the proof
+At the transaction location, click the ` ⋮ ` and select "Verify Proof" from the menu.
 <p align="center">
   <img src="docs/images/10.png" />
 </p>
