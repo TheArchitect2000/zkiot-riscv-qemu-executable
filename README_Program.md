@@ -218,32 +218,32 @@ You must first obtain developer permissions to submit commitments and proofs to 
 
 ### A.8.4. Go to the **IoT Developer Console**
 <p align="center">
-  <img src="docs/images/1.png" />
+  <img src="docs/images/A-8-4.png" />
 </p>
 
-### A.8.5. Click on **ZKP Commitment Publisher**
+### A.8.5. Click on **ZKP Commitment Submiter**
 <p align="center">
-  <img src="docs/images/2.png" />
+  <img src="docs/images/A-8-5.png" />
 </p>
 
 ### A.8.6. Click on **Upload**
 <p align="center">
-  <img src="docs/images/3.png" />
+  <img src="docs/images/A-8-6-1.png" />
 </p>
 <p align="center">
-  <img src="docs/images/20m.png" />
+  <img src="docs/images/A-8-6-2.png" />
 </p>
 <p align="center">
-  <img src="docs/images/5.png" />
+  <img src="docs/images/A-8-6-3.png" />
 </p>
 
-### A.8.7. Click on **Publish**
+### A.8.7. Click on **Submit**
 
 <p align="center">
-  <img src="docs/images/12.png" />
+  <img src="docs/images/A-8-7-1.png" />
 </p>
 <p align="center">
-  <img src="docs/images/13.png" />
+  <img src="docs/images/A-8-7-2.png" />
 </p>
 
 # Step B. Proof Generation
@@ -269,25 +269,25 @@ Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generate
 
 ### B.3.1. Goto the **IoT Developer Console**.
 <p align="center">
-  <img src="docs/images/1.png" />
+  <img src="docs/images/B-3-1.png" />
 </p>
 
-### B.3.2. Click on **ZKP Proof Publisher**.
+### B.3.2. Click on **ZKP Proof Submiter**.
 <p align="center">
-  <img src="docs/images/6.png" />
+  <img src="docs/images/B-3-2.png" />
 </p>
 
 ### B.3.3. Select the **IoT Device Type**.
 <p align="center">
-  <img src="docs/images/7.png" />
+  <img src="docs/images/B-3-3.png" />
 </p>
 
-### B.3.4. Click on **Publish**.
+### B.3.4. Click on **Submit**.
 <p align="center">
-  <img src="docs/images/8n1.png" />
+  <img src="docs/images/B-3-4-1.png" />
 </p>
 <p align="center">
-  <img src="docs/images/11.png" />
+  <img src="docs/images/B-3-4-2.png" />
 </p>
 
 # Step C. Proof Verification
