@@ -75,28 +75,28 @@ apt-get install qemu-user-static
 ```
 ### A.1.2. macOS:
 - Install Homebrew
-```bash
+```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 - Add the following path to the system.
-```bash
+```
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
 source ~/.zshrc
 ```
 - Verify the Homebrew installation
-```bash
+```
 brew --version
 ```
 - Install RISC-V Toolchain
-```bash
+```
 brew tap riscv-software-src/riscv
 ```
 - Build the toolchain
-```bash
+```
 brew install riscv-tools
 ```
 - Verify the Installation
-```bash
+```
 brew test riscv-tools
 ```
 - Install Spike RISC-V Simulator to run RISC-V binaries
@@ -183,23 +183,27 @@ The `commitmentGenerator` will create the following files:
 
 ## A.8. Submit the commitment on blockchain 
 Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generated commitment.
+### A.8.1 How to Acquire Developer Privileges
+You must first obtain developer permissions to submit commitments and proofs to the blockchain using the IoT Developer Console.
 
-### A.8.1. Goto the **IoT Developer Console**.
+### A.8.2 Connect your wallet to Fidesinnova's node web app.
+
+### A.8.2. Goto the **IoT Developer Console**
 <p align="center">
   <img src="docs/images/1.png" />
 </p>
 
-### A.8.2. Click on **ZKP Commitment Publisher**.
+### A.8.3. Click on **ZKP Commitment Publisher**
 <p align="center">
   <img src="docs/images/2.png" />
 </p>
 
-### A.8.3. Click on **Upload**.
+### A.8.4. Click on **Upload**
 <p align="center">
   <img src="docs/images/3.png" />
 </p>
 
-### A.8.4. Click on **Publish**.
+### A.8.5. Click on **Publish**
 <p align="center">
   <img src="docs/images/4.png" />
 </p>
@@ -224,6 +228,7 @@ qemu-riscv64-static program
 ```
 spike pk program
 ```
+The proof will be stored in the `data/proof.json` file.
 ## B.3. Submit the generated proof on blockchain 
 Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generated ZK proof file.
 
@@ -258,10 +263,10 @@ Simply run the verifier program.
 ```
 ./verifierForMac
 ```
-### C.2. Web ZKP Explorer
-Goto https://explorer.fidesinnova.io, search the submitted proof, from the menu choose "Verify Proof".
+## C.2. Web ZKP Explorer
+Go to https://explorer.fidesinnova.io, look for the submitted proof, and choose "Verify Proof" from the menu.
 
-### C.2.1. Goto https://explorer.fidesinnova.io**.
+### C.2.1. Goto https://explorer.fidesinnova.io.
 <p align="center">
   <img src="docs/images/9.png" />
 </p>
