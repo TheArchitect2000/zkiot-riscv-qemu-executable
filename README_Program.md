@@ -191,6 +191,8 @@ You must first obtain developer permissions to submit commitments and proofs to 
 <p align="center">
   <img src="docs/images/15.png" />
 </p>
+ After clicking the 'Update' button, please notify the node admin of your email address. For example, you can send an email to info@fidesinnova.io and request to upgrade your account to an "IoT developer account".
+
 
 ### A.8.2. Connect your wallet to Fidesinnova's node web app.
 <p align="center">
