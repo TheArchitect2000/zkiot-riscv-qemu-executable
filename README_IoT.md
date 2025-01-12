@@ -154,10 +154,13 @@ Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generate
 
 ### A.8.4 Click on **Publish**.
 <p align="center">
-  <img src="docs/images/4.png" />
+  <img src="docs/images/5.png" />
 </p>
 <p align="center">
-  <img src="docs/images/5.png" />
+  <img src="docs/images/12.png" />
+</p>
+<p align="center">
+  <img src="docs/images/13.png" />
 </p>
 
 # Step B. Proof Generation
