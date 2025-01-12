@@ -185,28 +185,47 @@ The `commitmentGenerator` will create the following files:
 Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generated commitment.
 ### A.8.1 How to Acquire Developer Privileges
 You must first obtain developer permissions to submit commitments and proofs to the blockchain using the IoT Developer Console.
+<p align="center">
+  <img src="docs/images/14.png" />
+</p>
+<p align="center">
+  <img src="docs/images/15.png" />
+</p>
 
 ### A.8.2 Connect your wallet to Fidesinnova's node web app.
+<p align="center">
+  <img src="docs/images/16.png" />
+</p>
+<p align="center">
+  <img src="docs/images/17m.png" />
+</p>
+<p align="center">
+  <img src="docs/images/18m.png" />
+</p>
 
-### A.8.2. Goto the **IoT Developer Console**
+### A.8.3. Goto the **IoT Developer Console**
 <p align="center">
   <img src="docs/images/1.png" />
 </p>
 
-### A.8.3. Click on **ZKP Commitment Publisher**
+### A.8.4. Click on **ZKP Commitment Publisher**
 <p align="center">
   <img src="docs/images/2.png" />
 </p>
 
-### A.8.4. Click on **Upload**
+### A.8.5. Click on **Upload**
 <p align="center">
   <img src="docs/images/3.png" />
 </p>
-
-### A.8.5. Click on **Publish**
+<p align="center">
+  <img src="docs/images/20m.png" />
+</p>
 <p align="center">
   <img src="docs/images/5.png" />
 </p>
+
+### A.8.6. Click on **Publish**
+
 <p align="center">
   <img src="docs/images/12.png" />
 </p>
