@@ -135,32 +135,69 @@ The `commitmentGenerator` will create the following files:
 - `program_new.s`: A newly generated assembly file with added macros.
 
 ## A.8. Submit the commitment on blockchain 
-Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generated commitment. 
+Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generated commitment.
 
-### A.8.1. Goto the **IoT Developer Console**.
+### A.8.1 How to Acquire Developer Privileges
+You must first obtain developer permissions to submit commitments and proofs to the blockchain using the IoT Developer Console.
 <p align="center">
-  <img src="docs/images/1.png" />
+  <img src="docs/images/14.png" />
+</p>
+<p align="center">
+  <img src="docs/images/15.png" />
+</p>
+ After clicking the 'Update' button, please notify the node admin of your email address. For example, you can send an email to info@fidesinnova.io and request to upgrade your account to an "IoT developer account".
+
+
+### A.8.2. Connect your wallet to Fidesinnova's node web app.
+<p align="center">
+  <img src="docs/images/16.png" />
+</p>
+<p align="center">
+  <img src="docs/images/21.png" />
+</p>
+<p align="center">
+  <img src="docs/images/17m.png" />
+</p>
+<p align="center">
+  <img src="docs/images/18m1.png" />
 </p>
 
-### A.8.2 Click on **ZKP Commitment Publisher**.
+### A.8.3. Request tokens from the faucet.
 <p align="center">
-  <img src="docs/images/2.png" />
+  <img src="docs/images/22.png" />
+</p>
+<p align="center">
+  <img src="docs/images/23.png" />
 </p>
 
-### A.8.3 Click on **Upload**.
+### A.8.4. Go to the **IoT Developer Console**
 <p align="center">
-  <img src="docs/images/3.png" />
+  <img src="docs/images/A-8-4.png" />
 </p>
 
-### A.8.4 Click on **Publish**.
+### A.8.5. Click on **ZKP Commitment Submiter**
 <p align="center">
-  <img src="docs/images/5.png" />
+  <img src="docs/images/A-8-5.png" />
+</p>
+
+### A.8.6. Click on **Upload**
+<p align="center">
+  <img src="docs/images/A-8-6-1.png" />
 </p>
 <p align="center">
-  <img src="docs/images/12.png" />
+  <img src="docs/images/A-8-6-2.png" />
 </p>
 <p align="center">
-  <img src="docs/images/13.png" />
+  <img src="docs/images/A-8-6-3.png" />
+</p>
+
+### A.8.7. Click on **Submit**
+
+<p align="center">
+  <img src="docs/images/A-8-7-1.png" />
+</p>
+<p align="center">
+  <img src="docs/images/A-8-7-2.png" />
 </p>
 
 # Step B. Proof Generation
