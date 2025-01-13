@@ -188,6 +188,7 @@ The `commitmentGenerator` will create the following files:
 
 ## A.8. Submit the commitment on blockchain 
 Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generated commitment.
+
 ### A.8.1 How to Acquire Developer Privileges
 You must first obtain developer permissions to submit commitments and proofs to the blockchain using the IoT Developer Console.
 <p align="center">
