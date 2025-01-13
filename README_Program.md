@@ -113,9 +113,14 @@ sudo make install
 ## A.2. Clone the zkIoT repository
 ```
 git clone https://github.com/FidesInnova/zkiot.git
-cd zkiot  
+cd zkiot
 ```
-
+### A.2.1 macOS permission
+To allow `commitmentGeneratorForMac` and `verifierForMac` to be executable on macOS, you need to adjust their permissions
+```
+chmod +x commitmentGeneratorForMac
+chmod +x verifierForMac
+```
 ## A.3. Writing a C++ program
 Write a C++ program for the GCC Compiler and save it as `program.cpp` in the `zkiot` project folder.
 **A sample program, program.cpp, is provided in the zkiot repository for testing purposes.**
