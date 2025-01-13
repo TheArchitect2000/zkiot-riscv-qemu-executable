@@ -1,14 +1,4 @@
 #!/bin/bash
-# Check if jq is installed
-if ! command -v jq &> /dev/null
-then
-    echo "jq could not be found, installing jq..."
-    sudo apt-get update && sudo apt-get install -y jq
-    if [ $? -ne 0 ]; then
-        echo "Failed to install jq"
-        exit 1
-    fi
-fi
 
 total_steps=12
 
@@ -75,8 +65,8 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Step 9: Execute the program using qemu-riscv64-static and store the output logs
-echo "[9/$total_steps] Executing program using qemu-riscv64-static"
+# Step 9: Execute the program using emulator and store the output logs
+echo "[9/$total_steps] Executing program using emulator"
 qemu-riscv64-static program <<EOF > log/proofGeneration.log 2>&1
 $(cat data/program_commitment.json)
 
@@ -86,11 +76,6 @@ $(cat class.json)
 
 $(cat data/setup$class_value.json)
 EOF
-
-if [ $? -ne 0 ]; then
-    echo "Program execution failed"
-    exit 1
-fi
 
 # Step 10: Extract the line that starts with {"commitment_id": from proofGeneration.log and store it as a JSON in data/proof.json
 echo "[10/$total_steps] Extracting proof JSON from proofGeneration.log"
