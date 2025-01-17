@@ -228,7 +228,7 @@ After clicking the 'Update' button, please email your request, including your em
 
 ### A.8.5. Click on **ZKP Commitment Submiter**
 <p align="center">
-  <img src="docs/images/A-8-5.png" />
+  <img src="docs/images/A-8-5-n.png" />
 </p>
 
 ### A.8.6. Click on **Upload**
@@ -279,7 +279,7 @@ Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generate
 
 ### B.3.2. Click on **ZKP Proof Submiter**.
 <p align="center">
-  <img src="docs/images/B-3-2.png" />
+  <img src="docs/images/B-3-2-n.png" />
 </p>
 
 ### B.3.3. Select the **IoT Device Type**.
@@ -287,12 +287,15 @@ Using Fidesinnova's node web app (e.g., panel.zksensor.tech) submit the generate
   <img src="docs/images/B-3-3.png" />
 </p>
 
-### B.3.4. Click on **Submit**.
+### B.3.4. Click on **Upload Proof**.
 <p align="center">
-  <img src="docs/images/B-3-4-1.png" />
+  <img src="docs/images/B-3-4-1-1.png" />
 </p>
 <p align="center">
-  <img src="docs/images/B-3-4-2.png" />
+  <img src="docs/images/B-3-4-1-2.png" />
+</p>
+<p align="center">
+  <img src="docs/images/B-3-4-1-3.png" />
 </p>
 
 # Step C. Proof Verification
