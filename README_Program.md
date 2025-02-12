@@ -25,7 +25,7 @@ This guide will teach you how to:
   - [A.2. Clone the zkIoT repository](#a2-clone-the-zkiot-repository)
   - [A.3. Writing a C++ program](#a3-writing-a-c-program)
   - [A.4. Compile the C++ program](#a4-compile-the-c-program)
-  - [A.5. Edit `device_config.json` in the zkiot folder](#a5-edit-device_configjson-in-the-zkiot-folder)
+  - [A.5. Edit `device_config.json` in the zkiot-riscv-qemu-executable folder](#a5-edit-device_configjson-in-the-zkiot-folder)
   - [A.6. Check the Commitment folder structure](#a6-check-the-commitment-folder-structure)
   - [A.7. Execute `commitmentGenerator`](#a7-execute-commitmentgenerator)
     - [A.7.1 Ubuntu](#a71-ubuntu)
@@ -110,10 +110,10 @@ make
 sudo make install
 ```
 
-## A.2. Clone the zkIoT repository
+## A.2. Clone the zkiot-riscv-qemu-executable repository
 ```
-git clone https://github.com/FidesInnova/zkiot.git
-cd zkiot
+git clone https://github.com/FidesInnova/zkiot-riscv-qemu-executable.git
+cd zkiot-riscv-qemu-executable
 ```
 ### A.2.1 macOS permission
 To allow `commitmentGeneratorForMac` and `verifierForMac` to be executable on macOS, you need to adjust their permissions
@@ -122,7 +122,7 @@ chmod +x commitmentGeneratorForMac
 chmod +x verifierForMac
 ```
 ## A.3. Writing a C++ program
-Write a C++ program for the GCC Compiler and save it as `program.cpp` in the `zkiot` project folder.
+Write a C++ program for the GCC Compiler and save it as `program.cpp` in the `zkiot-riscv-qemu-executable` project folder.
 **A sample program, program.cpp, is provided in the zkiot repository for testing purposes.**
 
 ## A.4. Compile the C++ program
@@ -130,7 +130,7 @@ Write a C++ program for the GCC Compiler and save it as `program.cpp` in the `zk
  riscv64-unknown-elf-g++ -S program.cpp -o program.s -lstdc++
  ```
 
-## A.5. Edit `device_config.json` in the zkiot folder
+## A.5. Edit `device_config.json` in the `zkiot-riscv-qemu-executable` folder
 ```
 {
   "class": 5, // 32-bit Integer
@@ -159,7 +159,7 @@ Ensure you have the correct `setupN.json` file for your class to proceed with th
 ## A.6. Check the Commitment folder structure
 Ensure your directory structure looks like below and contains `program.s`, `commitmentGenerator`, `class.json`, `device_config.json`, and `data/setupN.json`:
 ```
-zkiot/|
+zkiot-riscv-qemu-executable/|
       ├── class.json
       ├── commitmentGenerator
       ├── device_config.json
