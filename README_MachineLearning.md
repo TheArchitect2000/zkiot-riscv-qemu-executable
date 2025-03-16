@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://fidesinnova.io/" target="blank">
-    <img src="https://fidesinnova.io/Download/logo/g-c-web-back.png" alt="Fides Innova Logo">
+    <img src="docs/images/g-c-web-back.png" alt="Fides Innova Logo">
   </a>
 </p>
 
